@@ -1,4 +1,4 @@
-package io.schiar.pokechart.ui.theme
+package io.schiar.pokechart.view.theme
 
 import android.app.Activity
 import android.os.Build
