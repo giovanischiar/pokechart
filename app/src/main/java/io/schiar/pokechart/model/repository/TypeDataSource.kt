@@ -2,7 +2,7 @@ package io.schiar.pokechart.model.repository
 
 import io.schiar.pokechart.model.Type
 
-class TypeDataSource: DataSource {
+class TypeDataSource : DataSource {
     private val types: List<Type>
 
     init {
@@ -69,7 +69,19 @@ class TypeDataSource: DataSource {
             steel
                 .strongAgainst(rock, ice, fairy)
                 .weakAgainst(steel, fire, water, electric)
-                .resistantTo(normal, flying, poison, rock, bug, steel, grass, psychic, ice, dragon, fairy)
+                .resistantTo(
+                    normal,
+                    flying,
+                    poison,
+                    rock,
+                    bug,
+                    steel,
+                    grass,
+                    psychic,
+                    ice,
+                    dragon,
+                    fairy
+                )
                 .vulnerableTo(fighting, ground, fire),
             fire
                 .strongAgainst(bug, steel, grass, ice)
