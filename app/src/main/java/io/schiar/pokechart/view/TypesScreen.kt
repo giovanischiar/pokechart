@@ -3,6 +3,7 @@ package io.schiar.pokechart.view
 import androidx.compose.foundation.focusable
 import androidx.compose.foundation.gestures.scrollBy
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
@@ -11,6 +12,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.input.rotary.onRotaryScrollEvent
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import androidx.wear.compose.foundation.ExperimentalWearFoundationApi
@@ -20,6 +22,7 @@ import androidx.wear.compose.foundation.lazy.ScalingLazyColumnDefaults
 import androidx.wear.compose.foundation.lazy.rememberScalingLazyListState
 import androidx.wear.compose.foundation.rememberActiveFocusRequester
 import androidx.wear.compose.material.Chip
+import androidx.wear.compose.material.Icon
 import androidx.wear.compose.material.Text
 import io.schiar.pokechart.viewmodel.MainViewModel
 import kotlinx.coroutines.launch
@@ -52,8 +55,18 @@ fun TypesScreen(navController: NavController, viewModel: MainViewModel) {
         )
     ) {
         items(types.size) { index ->
+            val type = types[index]
+            val name = type.name
             Chip(
-                label = { Text(types[index].name) },
+                modifier = Modifier.fillMaxWidth(),
+                icon = {
+                    Icon(
+                        painter = painterResource(type.iconCode()),
+                        contentDescription = name,
+                        tint = type.color()
+                    )
+                },
+                label = { Text(name) },
                 onClick = { navController.navigate("TypeScreen") }
             )
         }
