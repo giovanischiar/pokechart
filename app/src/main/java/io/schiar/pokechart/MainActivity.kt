@@ -8,8 +8,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.wear.compose.navigation.SwipeDismissableNavHost
 import androidx.wear.compose.navigation.composable
 import androidx.wear.compose.navigation.rememberSwipeDismissableNavController
-import io.schiar.pokechart.view.TypesScreen
 import io.schiar.pokechart.view.TypeScreen
+import io.schiar.pokechart.view.TypesScreen
 import io.schiar.pokechart.view.theme.PokechartTheme
 import io.schiar.pokechart.viewmodel.MainViewModel
 
