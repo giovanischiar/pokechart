@@ -54,7 +54,7 @@ fun TypesScreen(navController: NavController, viewModel: MainViewModel) {
         items(types.size) { index ->
             Chip(
                 label = { Text(types[index].name) },
-                onClick = { navController.navigate("OtherScreen") }
+                onClick = { navController.navigate("TypeScreen") }
             )
         }
     }
