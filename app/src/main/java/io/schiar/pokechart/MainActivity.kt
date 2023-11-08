@@ -8,8 +8,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.wear.compose.navigation.SwipeDismissableNavHost
 import androidx.wear.compose.navigation.composable
 import androidx.wear.compose.navigation.rememberSwipeDismissableNavController
-import io.schiar.pokechart.view.MainScreen
-import io.schiar.pokechart.view.OtherScreen
+import io.schiar.pokechart.view.TypesScreen
+import io.schiar.pokechart.view.TypeScreen
 import io.schiar.pokechart.view.theme.PokechartTheme
 import io.schiar.pokechart.viewmodel.MainViewModel
 
@@ -21,15 +21,15 @@ class MainActivity : ComponentActivity() {
             PokechartTheme {
                 SwipeDismissableNavHost(
                     navController = navController,
-                    startDestination = "MainScreen"
+                    startDestination = "TypesScreen"
                 ) {
-                    composable("MainScreen") {
-                        MainScreen(
+                    composable("TypesScreen") {
+                        TypesScreen(
                             navController = navController,
                             viewModel = MainViewModel()
                         )
                     }
-                    composable("OtherScreen") { OtherScreen() }
+                    composable("TypeScreen") { TypeScreen() }
                 }
             }
         }
@@ -43,12 +43,12 @@ fun GreetingPreview() {
     PokechartTheme {
         SwipeDismissableNavHost(navController = navController, startDestination = "MainScreen") {
             composable("MainScreen") {
-                MainScreen(
+                TypesScreen(
                     navController = navController,
                     viewModel = MainViewModel()
                 )
             }
-            composable("OtherScreen") { OtherScreen() }
+            composable("OtherScreen") { TypeScreen() }
         }
     }
 }

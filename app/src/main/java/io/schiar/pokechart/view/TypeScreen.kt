@@ -8,7 +8,7 @@ import androidx.compose.ui.Modifier
 import androidx.wear.compose.material.Text
 
 @Composable
-fun OtherScreen() {
+fun TypeScreen() {
     Box(
         modifier = Modifier.fillMaxSize(),
         contentAlignment = Alignment.Center

@@ -1,7 +1,6 @@
 package io.schiar.pokechart.view
 
 import androidx.compose.foundation.focusable
-import androidx.compose.foundation.gestures.animateScrollBy
 import androidx.compose.foundation.gestures.scrollBy
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
@@ -27,7 +26,7 @@ import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalWearFoundationApi::class)
 @Composable
-fun MainScreen(navController: NavController, viewModel: MainViewModel) {
+fun TypesScreen(navController: NavController, viewModel: MainViewModel) {
     val types by viewModel.types.collectAsState()
     val listState = rememberScalingLazyListState()
     val focusRequester = rememberActiveFocusRequester()
