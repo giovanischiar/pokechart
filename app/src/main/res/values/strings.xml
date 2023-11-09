@@ -1,4 +1,8 @@
 <resources>
   <string name="app_name">Pokechart</string>
   <string name="title_activity_main">MainActivity</string>
+  <string name="strong_against">Strong against</string>
+  <string name="weak_against">Weak Against</string>
+  <string name="resistant_to">Resistant to</string>
+  <string name="vulnerable_to">Vulnerable to</string>
 </resources>

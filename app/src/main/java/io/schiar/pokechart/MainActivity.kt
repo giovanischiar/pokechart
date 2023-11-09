@@ -16,6 +16,7 @@ import io.schiar.pokechart.viewmodel.MainViewModel
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        val viewModel = MainViewModel()
         setContent {
             val navController = rememberSwipeDismissableNavController()
             PokechartTheme {
@@ -26,10 +27,10 @@ class MainActivity : ComponentActivity() {
                     composable("TypesScreen") {
                         TypesScreen(
                             navController = navController,
-                            viewModel = MainViewModel()
+                            viewModel = viewModel
                         )
                     }
-                    composable("TypeScreen") { TypeScreen() }
+                    composable("TypeScreen") { TypeScreen(viewModel = viewModel) }
                 }
             }
         }
@@ -40,15 +41,17 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun GreetingPreview() {
     val navController = rememberSwipeDismissableNavController()
+    val viewModel = MainViewModel()
+
     PokechartTheme {
         SwipeDismissableNavHost(navController = navController, startDestination = "MainScreen") {
             composable("MainScreen") {
                 TypesScreen(
                     navController = navController,
-                    viewModel = MainViewModel()
+                    viewModel = viewModel
                 )
             }
-            composable("OtherScreen") { TypeScreen() }
+            composable("OtherScreen") { TypeScreen(viewModel = viewModel) }
         }
     }
 }

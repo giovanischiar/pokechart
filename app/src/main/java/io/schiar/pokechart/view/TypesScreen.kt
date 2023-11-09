@@ -2,8 +2,11 @@ package io.schiar.pokechart.view
 
 import androidx.compose.foundation.focusable
 import androidx.compose.foundation.gestures.scrollBy
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.width
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
@@ -21,7 +24,7 @@ import androidx.wear.compose.foundation.lazy.ScalingLazyColumn
 import androidx.wear.compose.foundation.lazy.ScalingLazyColumnDefaults
 import androidx.wear.compose.foundation.lazy.rememberScalingLazyListState
 import androidx.wear.compose.foundation.rememberActiveFocusRequester
-import androidx.wear.compose.material.Chip
+import androidx.wear.compose.material.CompactChip
 import androidx.wear.compose.material.Icon
 import androidx.wear.compose.material.Text
 import io.schiar.pokechart.viewmodel.MainViewModel
@@ -52,22 +55,29 @@ fun TypesScreen(navController: NavController, viewModel: MainViewModel) {
         flingBehavior = ScalingLazyColumnDefaults.snapFlingBehavior(
             state = listState,
             snapOffset = 0.dp
-        )
+        ),
+        verticalArrangement = Arrangement.spacedBy(-10.dp)
     ) {
         items(types.size) { index ->
             val type = types[index]
             val name = type.name
-            Chip(
+            CompactChip(
                 modifier = Modifier.fillMaxWidth(),
                 icon = {
                     Icon(
+                        modifier = Modifier
+                            .width(20.dp)
+                            .height(20.dp),
                         painter = painterResource(type.iconCode()),
                         contentDescription = name,
                         tint = type.color()
                     )
                 },
                 label = { Text(name) },
-                onClick = { navController.navigate("TypeScreen") }
+                onClick = {
+                    viewModel.addCurrentType(typeName = name)
+                    navController.navigate("TypeScreen")
+                }
             )
         }
     }
