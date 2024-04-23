@@ -1,84 +1,57 @@
 package io.schiar.pokechart.view
 
-import androidx.compose.foundation.focusable
-import androidx.compose.foundation.gestures.scrollBy
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.ExperimentalLayoutApi
+import androidx.compose.foundation.layout.FlowRow
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.width
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.focus.focusRequester
-import androidx.compose.ui.input.rotary.onRotaryScrollEvent
-import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.unit.dp
-import androidx.navigation.NavController
-import androidx.wear.compose.foundation.ExperimentalWearFoundationApi
-import androidx.wear.compose.foundation.lazy.AutoCenteringParams
-import androidx.wear.compose.foundation.lazy.ScalingLazyColumn
-import androidx.wear.compose.foundation.lazy.ScalingLazyColumnDefaults
-import androidx.wear.compose.foundation.lazy.rememberScalingLazyListState
-import androidx.wear.compose.foundation.rememberActiveFocusRequester
-import androidx.wear.compose.material.CompactChip
-import androidx.wear.compose.material.Icon
-import androidx.wear.compose.material.Text
+import io.schiar.pokechart.view.components.TypeView
+import io.schiar.pokechart.view.viewdata.TypeViewData
 import io.schiar.pokechart.viewmodel.MainViewModel
-import kotlinx.coroutines.launch
 
-@OptIn(ExperimentalWearFoundationApi::class)
+@OptIn(ExperimentalLayoutApi::class)
 @Composable
-fun TypesScreen(navController: NavController, viewModel: MainViewModel) {
+fun TypesScreen(viewModel: MainViewModel, onNavigateToType: () -> Unit) {
     val types by viewModel.types.collectAsState()
-    val listState = rememberScalingLazyListState()
-    val focusRequester = rememberActiveFocusRequester()
-    val coroutineScope = rememberCoroutineScope()
 
-    ScalingLazyColumn(
-        modifier = Modifier
-            .fillMaxSize()
-            .onRotaryScrollEvent {
-                coroutineScope.launch {
-                    listState.scrollBy(it.verticalScrollPixels)
-                }
-                true
-            }
-            .focusRequester(focusRequester)
-            .focusable(),
-        autoCentering = AutoCenteringParams(itemIndex = 0),
-        horizontalAlignment = Alignment.CenterHorizontally,
-        state = listState,
-        flingBehavior = ScalingLazyColumnDefaults.snapFlingBehavior(
-            state = listState,
-            snapOffset = 0.dp
-        ),
-        verticalArrangement = Arrangement.spacedBy(-10.dp)
+    fun onTypePressed(type: TypeViewData) {
+        viewModel.addCurrentType(typeName = type.name)
+        onNavigateToType()
+    }
+
+    Box(
+        modifier = Modifier.fillMaxSize(),
+        contentAlignment = Alignment.Center
     ) {
-        items(types.size) { index ->
-            val type = types[index]
-            val name = type.name
-            CompactChip(
-                modifier = Modifier.fillMaxWidth(),
-                icon = {
-                    Icon(
-                        modifier = Modifier
-                            .width(20.dp)
-                            .height(20.dp),
-                        painter = painterResource(type.iconCode()),
-                        contentDescription = name,
-                        tint = type.color()
-                    )
-                },
-                label = { Text(name) },
-                onClick = {
-                    viewModel.addCurrentType(typeName = name)
-                    navController.navigate("TypeScreen")
+        Column(horizontalAlignment = Alignment.CenterHorizontally) {
+            Row {
+                types.subList(0, 2).map { type ->
+                    TypeView(type = type) { onTypePressed(type = type) }
                 }
-            )
+            }
+
+            FlowRow(
+                maxItemsInEachRow = 5,
+                horizontalArrangement = Arrangement.SpaceEvenly,
+                verticalArrangement = Arrangement.SpaceEvenly
+            ) {
+                types.subList(2, types.size - 1).map { type ->
+                    TypeView(type = type) { onTypePressed(type = type) }
+                }
+            }
+
+            Row {
+                types.subList(types.size - 1, types.size).map { type ->
+                    TypeView(type = type) { onTypePressed(type = type) }
+                }
+            }
         }
     }
 }

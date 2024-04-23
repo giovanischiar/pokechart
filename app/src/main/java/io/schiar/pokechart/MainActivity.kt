@@ -25,10 +25,9 @@ class MainActivity : ComponentActivity() {
                     startDestination = "TypesScreen"
                 ) {
                     composable("TypesScreen") {
-                        TypesScreen(
-                            navController = navController,
-                            viewModel = viewModel
-                        )
+                        TypesScreen(viewModel = viewModel) {
+                            navController.navigate(route = "TypeScreen")
+                        }
                     }
                     composable("TypeScreen") { TypeScreen(viewModel = viewModel) }
                 }
@@ -46,10 +45,7 @@ fun GreetingPreview() {
     PokechartTheme {
         SwipeDismissableNavHost(navController = navController, startDestination = "MainScreen") {
             composable("MainScreen") {
-                TypesScreen(
-                    navController = navController,
-                    viewModel = viewModel
-                )
+                TypesScreen(viewModel = viewModel) { navController.navigate(route = "TypeScreen") }
             }
             composable("OtherScreen") { TypeScreen(viewModel = viewModel) }
         }
