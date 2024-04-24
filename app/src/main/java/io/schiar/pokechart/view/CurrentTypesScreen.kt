@@ -26,13 +26,13 @@ import androidx.wear.compose.foundation.rememberActiveFocusRequester
 import androidx.wear.compose.material.Icon
 import io.schiar.pokechart.R
 import io.schiar.pokechart.view.components.TypeDetail
-import io.schiar.pokechart.viewmodel.MainViewModel
+import io.schiar.pokechart.viewmodel.CurrentTypesViewModel
 import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalWearFoundationApi::class)
 @Composable
-fun TypeScreen(viewModel: MainViewModel) {
-    val currentTypes = viewModel.currentTypes.collectAsState()
+fun CurrentTypesScreen(currentTypesViewModel: CurrentTypesViewModel) {
+    val currentTypes = currentTypesViewModel.currentTypesFlow.collectAsState(emptyList())
 
     if (currentTypes.value.isNotEmpty()) {
         val listState = rememberScalingLazyListState()

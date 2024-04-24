@@ -12,3 +12,7 @@ fun Type.toViewData(): TypeViewData {
         vulnerable = vulnerable.map { it.toViewData() }
     )
 }
+
+fun List<Type>.toViewDataList(): List<TypeViewData> {
+    return map { type -> type.toViewData() }
+}

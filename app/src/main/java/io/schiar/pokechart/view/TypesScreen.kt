@@ -13,16 +13,15 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import io.schiar.pokechart.view.components.TypeView
-import io.schiar.pokechart.view.viewdata.TypeViewData
-import io.schiar.pokechart.viewmodel.MainViewModel
+import io.schiar.pokechart.viewmodel.TypesViewModel
 
 @OptIn(ExperimentalLayoutApi::class)
 @Composable
-fun TypesScreen(viewModel: MainViewModel, onNavigateToType: () -> Unit) {
-    val types by viewModel.types.collectAsState()
+fun TypesScreen(typesViewModel: TypesViewModel, onNavigateToType: () -> Unit) {
+    val types by typesViewModel.typesFlow.collectAsState(emptyList())
 
-    fun onTypePressed(type: TypeViewData) {
-        viewModel.addCurrentType(typeName = type.name)
+    fun onTypePressedAt(index: Int) {
+        typesViewModel.addTypeToCurrentTypesTheTypeAt(index)
         onNavigateToType()
     }
 
@@ -32,9 +31,10 @@ fun TypesScreen(viewModel: MainViewModel, onNavigateToType: () -> Unit) {
     ) {
         Column(horizontalAlignment = Alignment.CenterHorizontally) {
             Row {
-                types.subList(0, 2).map { type ->
-                    TypeView(type = type) { onTypePressed(type = type) }
-                }
+                (if (types.size > 2) types.subList(0, 2) else emptyList())
+                    .mapIndexed { index, type ->
+                        TypeView(type = type) { onTypePressedAt(index) }
+                    }
             }
 
             FlowRow(
@@ -42,15 +42,19 @@ fun TypesScreen(viewModel: MainViewModel, onNavigateToType: () -> Unit) {
                 horizontalArrangement = Arrangement.SpaceEvenly,
                 verticalArrangement = Arrangement.SpaceEvenly
             ) {
-                types.subList(2, types.size - 1).map { type ->
-                    TypeView(type = type) { onTypePressed(type = type) }
-                }
+                val offset = 2
+                (if (types.size > 2) types.subList(offset, types.size - 1) else emptyList())
+                    .mapIndexed { index, type ->
+                        TypeView(type = type) { onTypePressedAt(index = index + offset) }
+                    }
             }
 
             Row {
-                types.subList(types.size - 1, types.size).map { type ->
-                    TypeView(type = type) { onTypePressed(type = type) }
-                }
+                val offset = types.size - 1
+                (if (types.size > 1) types.subList(offset, types.size) else emptyList())
+                    .mapIndexed { index, type ->
+                        TypeView(type = type) { onTypePressedAt(index = index + offset) }
+                    }
             }
         }
     }

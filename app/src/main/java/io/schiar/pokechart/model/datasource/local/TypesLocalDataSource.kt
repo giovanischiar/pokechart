@@ -1,8 +1,11 @@
-package io.schiar.pokechart.model.repository
+package io.schiar.pokechart.model.datasource.local
 
 import io.schiar.pokechart.model.Type
+import io.schiar.pokechart.model.datasource.TypesDataSource
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.flow
 
-class TypeDataSource : DataSource {
+class TypesLocalDataSource: TypesDataSource {
     private val types: List<Type>
 
     init {
@@ -70,17 +73,7 @@ class TypeDataSource : DataSource {
                 .strongAgainst(rock, ice, fairy)
                 .weakAgainst(steel, fire, water, electric)
                 .resistantTo(
-                    normal,
-                    flying,
-                    poison,
-                    rock,
-                    bug,
-                    steel,
-                    grass,
-                    psychic,
-                    ice,
-                    dragon,
-                    fairy
+                    normal, flying, poison, rock, bug, steel, grass, psychic, ice, dragon, fairy
                 )
                 .vulnerableTo(fighting, ground, fire),
             fire
@@ -131,7 +124,5 @@ class TypeDataSource : DataSource {
         )
     }
 
-    override fun loadTypes(): List<Type> {
-        return types
-    }
+    override fun retrieveTypes(): Flow<List<Type>> = flow { emit(types) }
 }
