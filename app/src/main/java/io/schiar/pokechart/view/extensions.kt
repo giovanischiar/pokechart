@@ -22,7 +22,31 @@ import io.schiar.pokechart.view.theme.steel
 import io.schiar.pokechart.view.theme.water
 import io.schiar.pokechart.view.viewdata.TypeViewData
 
-fun TypeViewData.iconCode(): Int {
+fun TypeViewData.stringResourceID(): Int {
+    return when (name) {
+        "Normal" -> R.string.normal
+        "Fighting" -> R.string.fighting
+        "Flying" -> R.string.flying
+        "Poison" -> R.string.poison
+        "Ground" -> R.string.ground
+        "Rock" -> R.string.rock
+        "Bug" -> R.string.bug
+        "Ghost" -> R.string.ghost
+        "Steel" -> R.string.steel
+        "Fire" -> R.string.fire
+        "Water" -> R.string.water
+        "Grass" -> R.string.grass
+        "Electric" -> R.string.electric
+        "Psychic" -> R.string.psychic
+        "Ice" -> R.string.ice
+        "Dragon" -> R.string.dragon
+        "Fairy" -> R.string.fairy
+        "Dark" -> R.string.dark
+        else -> R.string.normal
+    }
+}
+
+fun TypeViewData.iconResourceID(): Int {
     return when (name) {
         "Normal" -> R.drawable.normal
         "Fighting" -> R.drawable.fighting

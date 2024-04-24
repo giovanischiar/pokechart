@@ -10,4 +10,8 @@ class CurrentTypesViewModel(
     val currentTypesFlow = currentTypesRepository.currentTypesFlow.map { types ->
         types.toViewDataList()
     }
+
+    val resultTypeFlow = currentTypesRepository.currentTypesFlow.map { types ->
+        types.reduce { acc, type -> acc + type }.toViewData()
+    }
 }

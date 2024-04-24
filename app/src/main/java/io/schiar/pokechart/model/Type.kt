@@ -46,4 +46,25 @@ data class Type(
             vulnerable = types.asList() + vulnerable
         )
     }
+
+    operator fun plus(other: Type): Type {
+        return Type(
+            name = name + " " + other.name,
+            strong = strong + other.strong,
+            weak = weak + other.weak,
+            resistant = resistant + other.resistant,
+            vulnerable = calculateNewVulnerableList(
+                otherVulnerable = other.vulnerable,
+                otherResistant = other.resistant
+            )
+        )
+    }
+
+    private fun calculateNewVulnerableList(
+        otherVulnerable: List<Type>,
+        otherResistant: List<Type>
+    ): List<Type> {
+        return this.vulnerable.toMutableList().apply { removeAll(otherResistant) } +
+                otherVulnerable.toMutableList().apply { removeAll(this@Type.resistant) }
+    }
 }

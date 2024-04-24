@@ -5,4 +5,24 @@
   <string name="weak_against">Weak Against</string>
   <string name="resistant_to">Resistant to</string>
   <string name="vulnerable_to">Vulnerable to</string>
+  <string name="select_multiple">Select Multiple</string>
+  <string name="done_selecting_multiple">Done Selecting Multiple</string>
+  <string name="normal">Normal</string>
+  <string name="fighting">Fighting</string>
+  <string name="flying">Flying</string>
+  <string name="poison">Poison</string>
+  <string name="ground">Ground</string>
+  <string name="rock">Rock</string>
+  <string name="bug">Bug</string>
+  <string name="ghost">Ghost</string>
+  <string name="steel">Steel</string>
+  <string name="fire">Fire</string>
+  <string name="water">Water</string>
+  <string name="grass">Grass</string>
+  <string name="electric">Electric</string>
+  <string name="psychic">Psychic</string>
+  <string name="ice">Ice</string>
+  <string name="dragon">Dragon</string>
+  <string name="fairy">Fairy</string>
+  <string name="dark">Dark</string>
 </resources>
