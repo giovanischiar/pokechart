@@ -1,8 +1,8 @@
 package io.schiar.pokechart.viewmodel
 
 import io.schiar.pokechart.model.Type
-import io.schiar.pokechart.view.viewdata.TypeViewData
-import io.schiar.pokechart.view.viewdata.TypeLayoutViewData
+import io.schiar.pokechart.view.shared.viewdata.TypeViewData
+import io.schiar.pokechart.view.shared.viewdata.TypeLayoutViewData
 
 fun Type.toViewData(): TypeViewData {
     return TypeViewData(

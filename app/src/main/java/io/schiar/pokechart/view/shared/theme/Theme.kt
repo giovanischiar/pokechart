@@ -1,4 +1,4 @@
-package io.schiar.pokechart.view.theme
+package io.schiar.pokechart.view.shared.theme
 
 import android.app.Activity
 import android.os.Build

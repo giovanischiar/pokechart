@@ -1,4 +1,4 @@
-package io.schiar.pokechart.view.theme
+package io.schiar.pokechart.view.shared.theme
 
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontFamily

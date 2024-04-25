@@ -1,4 +1,4 @@
-package io.schiar.pokechart.view.components
+package io.schiar.pokechart.view.types.component
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.runtime.Composable
@@ -6,10 +6,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.wear.compose.material.ButtonDefaults
-import io.schiar.pokechart.view.color
-import io.schiar.pokechart.view.iconResourceID
-import io.schiar.pokechart.view.stringResourceID
-import io.schiar.pokechart.view.viewdata.TypeViewData
+import io.schiar.pokechart.view.shared.color
+import io.schiar.pokechart.view.shared.iconResourceID
+import io.schiar.pokechart.view.shared.stringResourceID
+import io.schiar.pokechart.view.shared.viewdata.TypeViewData
 
 @Composable
 fun TypeView(

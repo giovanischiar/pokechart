@@ -1,4 +1,4 @@
-package io.schiar.pokechart.view.components
+package io.schiar.pokechart.view.types.component
 
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size

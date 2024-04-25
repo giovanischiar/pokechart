@@ -1,11 +1,11 @@
-package io.schiar.pokechart.view
+package io.schiar.pokechart.view.resulttype
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
-import io.schiar.pokechart.view.components.ResultTypeView
-import io.schiar.pokechart.view.components.TypesBar
+import io.schiar.pokechart.view.resulttype.component.ResultTypeView
+import io.schiar.pokechart.view.resulttype.component.TypesBar
 import io.schiar.pokechart.viewmodel.ResultTypeViewModel
 
 @Composable

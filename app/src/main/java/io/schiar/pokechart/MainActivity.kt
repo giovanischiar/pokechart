@@ -12,9 +12,9 @@ import io.schiar.pokechart.model.datasource.local.ResultTypeLocalDataSource
 import io.schiar.pokechart.model.datasource.local.TypesLocalDataSource
 import io.schiar.pokechart.model.repository.ResultTypeRepository
 import io.schiar.pokechart.model.repository.TypesRepository
-import io.schiar.pokechart.view.ResultTypeScreen
-import io.schiar.pokechart.view.TypesScreen
-import io.schiar.pokechart.view.theme.PokechartTheme
+import io.schiar.pokechart.view.resulttype.ResultTypeScreen
+import io.schiar.pokechart.view.shared.theme.PokechartTheme
+import io.schiar.pokechart.view.types.TypesScreen
 import io.schiar.pokechart.viewmodel.ResultTypeViewModel
 import io.schiar.pokechart.viewmodel.TypesViewModel
 

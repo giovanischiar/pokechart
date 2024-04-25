@@ -1,4 +1,4 @@
-package io.schiar.pokechart.view.viewdata
+package io.schiar.pokechart.view.shared.viewdata
 
 data class TypeLayoutViewData(
     val upperRow: List<Pair<Int, TypeViewData>> = emptyList(),

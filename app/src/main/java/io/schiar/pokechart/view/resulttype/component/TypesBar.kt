@@ -1,4 +1,4 @@
-package io.schiar.pokechart.view.components
+package io.schiar.pokechart.view.resulttype.component
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
@@ -12,10 +12,10 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.wear.compose.material.Icon
-import io.schiar.pokechart.view.color
-import io.schiar.pokechart.view.iconResourceID
-import io.schiar.pokechart.view.stringResourceID
-import io.schiar.pokechart.view.viewdata.TypeViewData
+import io.schiar.pokechart.view.shared.color
+import io.schiar.pokechart.view.shared.iconResourceID
+import io.schiar.pokechart.view.shared.stringResourceID
+import io.schiar.pokechart.view.shared.viewdata.TypeViewData
 
 @Composable
 fun TypesBar(typeNames: List<String>) {

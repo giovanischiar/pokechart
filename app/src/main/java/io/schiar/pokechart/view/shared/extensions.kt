@@ -1,26 +1,8 @@
-package io.schiar.pokechart.view
+package io.schiar.pokechart.view.shared
 
 import androidx.compose.ui.graphics.Color
 import io.schiar.pokechart.R
-import io.schiar.pokechart.view.theme.bug
-import io.schiar.pokechart.view.theme.dark
-import io.schiar.pokechart.view.theme.dragon
-import io.schiar.pokechart.view.theme.electric
-import io.schiar.pokechart.view.theme.fairy
-import io.schiar.pokechart.view.theme.fighting
-import io.schiar.pokechart.view.theme.fire
-import io.schiar.pokechart.view.theme.flying
-import io.schiar.pokechart.view.theme.ghost
-import io.schiar.pokechart.view.theme.grass
-import io.schiar.pokechart.view.theme.ground
-import io.schiar.pokechart.view.theme.ice
-import io.schiar.pokechart.view.theme.normal
-import io.schiar.pokechart.view.theme.poison
-import io.schiar.pokechart.view.theme.psychic
-import io.schiar.pokechart.view.theme.rock
-import io.schiar.pokechart.view.theme.steel
-import io.schiar.pokechart.view.theme.water
-import io.schiar.pokechart.view.viewdata.TypeViewData
+import io.schiar.pokechart.view.shared.viewdata.TypeViewData
 
 val TypeViewData.stringResourceID: Int get() {
     return when (name) {
@@ -72,24 +54,24 @@ val TypeViewData.iconResourceID: Int get() {
 
 val TypeViewData.color: Color get() {
     return when (name) {
-        "Normal" -> normal
-        "Fighting" -> fighting
-        "Flying" -> flying
-        "Poison" -> poison
-        "Ground" -> ground
-        "Rock" -> rock
-        "Bug" -> bug
-        "Ghost" -> ghost
-        "Steel" -> steel
-        "Fire" -> fire
-        "Water" -> water
-        "Grass" -> grass
-        "Electric" -> electric
-        "Psychic" -> psychic
-        "Ice" -> ice
-        "Dragon" -> dragon
-        "Fairy" -> fairy
-        "Dark" -> dark
-        else -> normal
+        "Normal" -> io.schiar.pokechart.view.shared.theme.normal
+        "Fighting" -> io.schiar.pokechart.view.shared.theme.fighting
+        "Flying" -> io.schiar.pokechart.view.shared.theme.flying
+        "Poison" -> io.schiar.pokechart.view.shared.theme.poison
+        "Ground" -> io.schiar.pokechart.view.shared.theme.ground
+        "Rock" -> io.schiar.pokechart.view.shared.theme.rock
+        "Bug" -> io.schiar.pokechart.view.shared.theme.bug
+        "Ghost" -> io.schiar.pokechart.view.shared.theme.ghost
+        "Steel" -> io.schiar.pokechart.view.shared.theme.steel
+        "Fire" -> io.schiar.pokechart.view.shared.theme.fire
+        "Water" -> io.schiar.pokechart.view.shared.theme.water
+        "Grass" -> io.schiar.pokechart.view.shared.theme.grass
+        "Electric" -> io.schiar.pokechart.view.shared.theme.electric
+        "Psychic" -> io.schiar.pokechart.view.shared.theme.psychic
+        "Ice" -> io.schiar.pokechart.view.shared.theme.ice
+        "Dragon" -> io.schiar.pokechart.view.shared.theme.dragon
+        "Fairy" -> io.schiar.pokechart.view.shared.theme.fairy
+        "Dark" -> io.schiar.pokechart.view.shared.theme.dark
+        else -> io.schiar.pokechart.view.shared.theme.normal
     }
 }

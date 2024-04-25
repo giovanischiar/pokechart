@@ -1,4 +1,4 @@
-package io.schiar.pokechart.view.components
+package io.schiar.pokechart.view.resulttype.component
 
 import androidx.compose.foundation.focusable
 import androidx.compose.foundation.gestures.scrollBy
@@ -17,7 +17,7 @@ import androidx.wear.compose.foundation.lazy.ScalingLazyColumnDefaults
 import androidx.wear.compose.foundation.lazy.rememberScalingLazyListState
 import androidx.wear.compose.foundation.rememberActiveFocusRequester
 import io.schiar.pokechart.R
-import io.schiar.pokechart.view.viewdata.TypeViewData
+import io.schiar.pokechart.view.shared.viewdata.TypeViewData
 import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalWearFoundationApi::class)
@@ -45,13 +45,13 @@ fun ResultTypeView(resultType: TypeViewData) {
         )
     ) {
         item {
-            ResultTypeView(
+            TypeAndRatioView(
                 typeAndRatioList = resultType.resistant, titleID = R.string.resistant_to
             )
         }
 
         item {
-            ResultTypeView(
+            TypeAndRatioView(
                 typeAndRatioList = resultType.vulnerable, titleID = R.string.vulnerable_to
             )
         }
@@ -59,13 +59,13 @@ fun ResultTypeView(resultType: TypeViewData) {
         if (resultType.names.size != 1) return@ScalingLazyColumn
 
         item {
-            ResultTypeView(
+            TypeAndRatioView(
                 typeAndRatioList = resultType.strong, titleID = R.string.strong_against
             )
         }
 
         item {
-            ResultTypeView(
+            TypeAndRatioView(
                 typeAndRatioList = resultType.weak, titleID = R.string.weak_against
             )
         }

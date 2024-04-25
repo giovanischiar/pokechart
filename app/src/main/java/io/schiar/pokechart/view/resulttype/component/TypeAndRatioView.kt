@@ -1,4 +1,4 @@
-package io.schiar.pokechart.view.components
+package io.schiar.pokechart.view.resulttype.component
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.ExperimentalLayoutApi
@@ -16,14 +16,14 @@ import androidx.wear.compose.material.Icon
 import androidx.wear.compose.material.MaterialTheme
 import androidx.wear.compose.material.Text
 import androidx.wear.compose.material.TitleCard
-import io.schiar.pokechart.view.color
-import io.schiar.pokechart.view.iconResourceID
-import io.schiar.pokechart.view.stringResourceID
-import io.schiar.pokechart.view.viewdata.TypeViewData
+import io.schiar.pokechart.view.shared.color
+import io.schiar.pokechart.view.shared.iconResourceID
+import io.schiar.pokechart.view.shared.stringResourceID
+import io.schiar.pokechart.view.shared.viewdata.TypeViewData
 
 @OptIn(ExperimentalLayoutApi::class)
 @Composable
-fun ResultTypeView(typeAndRatioList: List<Pair<TypeViewData, Int>>, titleID: Int) {
+fun TypeAndRatioView(typeAndRatioList: List<Pair<TypeViewData, Int>>, titleID: Int) {
     TitleCard(
         onClick = {},
         title = { Text(stringResource(titleID)) },

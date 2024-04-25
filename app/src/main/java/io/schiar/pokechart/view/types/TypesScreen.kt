@@ -1,13 +1,13 @@
-package io.schiar.pokechart.view
+package io.schiar.pokechart.view.types
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.graphics.Color
 import io.schiar.pokechart.R
-import io.schiar.pokechart.view.components.IconButton
-import io.schiar.pokechart.view.components.TypesView
-import io.schiar.pokechart.view.viewdata.TypeLayoutViewData
+import io.schiar.pokechart.view.shared.viewdata.TypeLayoutViewData
+import io.schiar.pokechart.view.types.component.IconButton
+import io.schiar.pokechart.view.types.component.TypesView
 import io.schiar.pokechart.viewmodel.TypesViewModel
 
 @Composable
