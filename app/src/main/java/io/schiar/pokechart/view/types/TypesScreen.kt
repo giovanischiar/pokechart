@@ -15,7 +15,7 @@ fun TypesScreen(typesViewModel: TypesViewModel, navigateToCurrentTypes: () -> Un
     val types by typesViewModel.typesFlow.collectAsState(TypeLayoutViewData())
     val selectedTypesIndices by typesViewModel.selectedTypesIndicesStateFlow.collectAsState()
     val shouldNavigateToCurrentTypes by typesViewModel
-        .shouldNavigateToCurrentTypesStateFlow
+        .shouldNavigateToResultTypeStateFlow
         .collectAsState()
 
     if (types.isEmpty()) return

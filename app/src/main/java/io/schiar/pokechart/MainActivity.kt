@@ -5,6 +5,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.NavHostController
 import androidx.wear.compose.navigation.SwipeDismissableNavHost
 import androidx.wear.compose.navigation.composable
 import androidx.wear.compose.navigation.rememberSwipeDismissableNavController
@@ -13,59 +14,46 @@ import io.schiar.pokechart.model.datasource.local.TypesLocalDataSource
 import io.schiar.pokechart.model.repository.ResultTypeRepository
 import io.schiar.pokechart.model.repository.TypesRepository
 import io.schiar.pokechart.view.resulttype.ResultTypeScreen
+import io.schiar.pokechart.view.shared.Route.RESULT_TYPE_ROUTE
+import io.schiar.pokechart.view.shared.Route.TYPES_ROUTE
 import io.schiar.pokechart.view.shared.theme.PokechartTheme
 import io.schiar.pokechart.view.types.TypesScreen
 import io.schiar.pokechart.viewmodel.ResultTypeViewModel
 import io.schiar.pokechart.viewmodel.TypesViewModel
 
 class MainActivity : ComponentActivity() {
+    private val typesDataSource = TypesLocalDataSource()
+    private val currentTypesDataSource = ResultTypeLocalDataSource()
+    private val typesRepository = TypesRepository(typesDataSource, currentTypesDataSource)
+    private val currentTypesRepository = ResultTypeRepository(currentTypesDataSource)
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val typesDataSource = TypesLocalDataSource()
-        val currentTypesDataSource = ResultTypeLocalDataSource()
-        val typesRepository = TypesRepository(typesDataSource, currentTypesDataSource)
-        val currentTypesRepository = ResultTypeRepository(currentTypesDataSource)
+        setContent { Navigation() }
+    }
 
-        setContent {
-            val navController = rememberSwipeDismissableNavController()
-            PokechartTheme {
-                SwipeDismissableNavHost(
-                    navController = navController,
-                    startDestination = "TypesScreen"
-                ) {
-                    composable("TypesScreen") {
-                        TypesScreen(typesViewModel = TypesViewModel(typesRepository)) {
-                            navController.navigate(route = "CurrentTypesScreen")
-                        }
+    @Composable
+    fun Navigation(navController: NavHostController = rememberSwipeDismissableNavController()) {
+        PokechartTheme {
+            SwipeDismissableNavHost(
+                navController = navController,
+                startDestination = TYPES_ROUTE.id
+            ) {
+                composable(TYPES_ROUTE.id) {
+                    TypesScreen(typesViewModel = TypesViewModel(typesRepository)) {
+                        navController.navigate(route = RESULT_TYPE_ROUTE.id)
                     }
-                    composable("CurrentTypesScreen") {
-                        ResultTypeScreen(
-                            resultTypeViewModel = ResultTypeViewModel(currentTypesRepository)
-                        )
-                    }
+                }
+                composable(RESULT_TYPE_ROUTE.id) {
+                    ResultTypeScreen(
+                        resultTypeViewModel = ResultTypeViewModel(currentTypesRepository)
+                    )
                 }
             }
         }
     }
-}
 
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    val navController = rememberSwipeDismissableNavController()
-    val typesDataSource = TypesLocalDataSource()
-    val currentTypesDataSource = ResultTypeLocalDataSource()
-    val typesRepository = TypesRepository(typesDataSource, currentTypesDataSource)
-    val currentTypesRepository = ResultTypeRepository(currentTypesDataSource)
-    val typesViewModel = TypesViewModel(typesRepository)
-    val currentTypesViewModel = ResultTypeViewModel(currentTypesRepository)
-
-    PokechartTheme {
-        SwipeDismissableNavHost(navController = navController, startDestination = "TypesScreen") {
-            composable("TypesScreen") {
-                TypesScreen(typesViewModel) { navController.navigate(route = "CurrentTypesScreen") }
-            }
-            composable("CurrentTypesScreen") { ResultTypeScreen(currentTypesViewModel) }
-        }
-    }
+    @Preview(showBackground = true)
+    @Composable
+    fun Preview() { Navigation() }
 }

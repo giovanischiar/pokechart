@@ -13,9 +13,9 @@ class TypesViewModel(
     val typesFlow = typesRepository.typesFlow.map { types -> types.toTypesViewData() }
     private val selectedTypesIndicesMutableStateFlow = MutableStateFlow(value = listOf<Int>())
     val selectedTypesIndicesStateFlow: StateFlow<List<Int>> = selectedTypesIndicesMutableStateFlow
-    private val shouldNavigateToCurrentTypesMutableStateFlow = MutableStateFlow(value = false)
-    val shouldNavigateToCurrentTypesStateFlow: StateFlow<Boolean>
-        = shouldNavigateToCurrentTypesMutableStateFlow
+    private val shouldNavigateToResultTypeMutableStateFlow = MutableStateFlow(value = false)
+    val shouldNavigateToResultTypeStateFlow: StateFlow<Boolean>
+        = shouldNavigateToResultTypeMutableStateFlow
 
     fun selectTypeAt(index: Int) {
         selectedTypesIndicesMutableStateFlow.update { selectedTypesIndices ->
@@ -29,6 +29,6 @@ class TypesViewModel(
         val selectedTypesIndices = selectedTypesIndicesMutableStateFlow.value
         if (selectedTypesIndices.isEmpty()) return
         typesRepository.addTypesToResultTypeTheTypesAt(indices = selectedTypesIndices)
-        shouldNavigateToCurrentTypesMutableStateFlow.update { true }
+        shouldNavigateToResultTypeMutableStateFlow.update { true }
     }
 }
