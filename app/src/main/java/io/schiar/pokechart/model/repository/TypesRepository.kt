@@ -15,8 +15,8 @@ class TypesRepository(
     private var types: List<Type> = emptyList()
     val typesFlow: Flow<List<Type>> = typesDataSource.retrieveTypes().onEach { types = it }
 
-    fun addTypeToCurrentTypesTheTypeAt(vararg indices: Int) {
-        val types = indices.toList().mapNotNull { index -> types.getOrNull(index) }
+    fun addTypesToCurrentTypesTheTypesAt(indices: List<Int>) {
+        val types = indices.mapNotNull { index -> types.getOrNull(index) }
         currentTypesDataSource.updateCurrentTypes(types)
     }
 }

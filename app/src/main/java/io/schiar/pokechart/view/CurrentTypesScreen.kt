@@ -50,9 +50,9 @@ fun CurrentTypesScreen(currentTypesViewModel: CurrentTypesViewModel) {
                 currentTypes.map { type ->
                     Icon(
                         modifier = Modifier.size(20.dp),
-                        painter = painterResource(id = type.iconResourceID()),
-                        contentDescription = stringResource(id = type.stringResourceID()),
-                        tint = type.color()
+                        painter = painterResource(id = type.iconResourceID),
+                        contentDescription = stringResource(id = type.stringResourceID),
+                        tint = type.color
                     )
                 }
 

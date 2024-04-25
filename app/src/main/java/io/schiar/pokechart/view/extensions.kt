@@ -22,7 +22,7 @@ import io.schiar.pokechart.view.theme.steel
 import io.schiar.pokechart.view.theme.water
 import io.schiar.pokechart.view.viewdata.TypeViewData
 
-fun TypeViewData.stringResourceID(): Int {
+val TypeViewData.stringResourceID: Int get() {
     return when (name) {
         "Normal" -> R.string.normal
         "Fighting" -> R.string.fighting
@@ -46,7 +46,7 @@ fun TypeViewData.stringResourceID(): Int {
     }
 }
 
-fun TypeViewData.iconResourceID(): Int {
+val TypeViewData.iconResourceID: Int get() {
     return when (name) {
         "Normal" -> R.drawable.normal
         "Fighting" -> R.drawable.fighting
@@ -70,7 +70,7 @@ fun TypeViewData.iconResourceID(): Int {
     }
 }
 
-fun TypeViewData.color(): Color {
+val TypeViewData.color: Color get() {
     return when (name) {
         "Normal" -> normal
         "Fighting" -> fighting

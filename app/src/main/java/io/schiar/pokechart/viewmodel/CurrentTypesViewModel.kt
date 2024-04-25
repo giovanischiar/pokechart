@@ -1,6 +1,7 @@
 package io.schiar.pokechart.viewmodel
 
 import androidx.lifecycle.ViewModel
+import io.schiar.pokechart.model.asType
 import io.schiar.pokechart.model.repository.CurrentTypesRepository
 import kotlinx.coroutines.flow.map
 
@@ -12,6 +13,6 @@ class CurrentTypesViewModel(
     }
 
     val resultTypeFlow = currentTypesRepository.currentTypesFlow.map { types ->
-        types.reduce { acc, type -> acc + type }.toViewData()
+        types.asType().toViewData()
     }
 }

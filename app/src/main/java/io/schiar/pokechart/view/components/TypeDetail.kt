@@ -27,7 +27,7 @@ import io.schiar.pokechart.view.viewdata.TypeViewData
 @Composable
 fun TypeDetail(types: List<TypeViewData>, titleID: Int) {
     val typesDrawn = remember { mutableListOf<TypeViewData>() }
-    val typesGrouped = remember { types.groupBy { it.name } }
+    val typesGrouped = remember { types.groupBy { it.name }.mapValues { it.value.size } }
 
     TitleCard(
         onClick = {},
@@ -40,15 +40,13 @@ fun TypeDetail(types: List<TypeViewData>, titleID: Int) {
                     typesDrawn.add(type)
                     Box {
                         Icon(
-                            modifier = Modifier
-                                .width(20.dp)
-                                .height(20.dp),
-                            painter = painterResource(id = type.iconResourceID()),
-                            contentDescription = stringResource(id = type.stringResourceID()),
-                            tint = type.color()
+                            modifier = Modifier.width(20.dp).height(20.dp),
+                            painter = painterResource(id = type.iconResourceID),
+                            contentDescription = stringResource(id = type.stringResourceID),
+                            tint = type.color
                         )
 
-                        val timesAppeared = typesGrouped[type.name]?.size ?: 1
+                        val timesAppeared = typesGrouped[type.name] ?: 1
                         if (timesAppeared > 1) {
                             Text(
                                 modifier = Modifier.align(Alignment.BottomEnd),
