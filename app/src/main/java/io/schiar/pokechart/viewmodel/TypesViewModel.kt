@@ -28,7 +28,7 @@ class TypesViewModel(
     fun doneSelectingButtonWasPressed() {
         val selectedTypesIndices = selectedTypesIndicesMutableStateFlow.value
         if (selectedTypesIndices.isEmpty()) return
-        typesRepository.addTypesToCurrentTypesTheTypesAt(indices = selectedTypesIndices)
+        typesRepository.addTypesToResultTypeTheTypesAt(indices = selectedTypesIndices)
         shouldNavigateToCurrentTypesMutableStateFlow.update { true }
     }
 }

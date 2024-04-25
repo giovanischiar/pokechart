@@ -7,12 +7,12 @@ import androidx.compose.ui.graphics.Color
 import io.schiar.pokechart.R
 import io.schiar.pokechart.view.components.IconButton
 import io.schiar.pokechart.view.components.TypesView
-import io.schiar.pokechart.view.viewdata.TypesViewData
+import io.schiar.pokechart.view.viewdata.TypeLayoutViewData
 import io.schiar.pokechart.viewmodel.TypesViewModel
 
 @Composable
 fun TypesScreen(typesViewModel: TypesViewModel, navigateToCurrentTypes: () -> Unit) {
-    val types by typesViewModel.typesFlow.collectAsState(TypesViewData())
+    val types by typesViewModel.typesFlow.collectAsState(TypeLayoutViewData())
     val selectedTypesIndices by typesViewModel.selectedTypesIndicesStateFlow.collectAsState()
     val shouldNavigateToCurrentTypes by typesViewModel
         .shouldNavigateToCurrentTypesStateFlow

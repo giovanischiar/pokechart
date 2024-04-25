@@ -1,6 +1,6 @@
 package io.schiar.pokechart.view.viewdata
 
-data class TypesViewData(
+data class TypeLayoutViewData(
     val upperRow: List<Pair<Int, TypeViewData>> = emptyList(),
     val centralRows: List<Pair<Int, TypeViewData>> = emptyList(),
     val lowerRow: List<Pair<Int, TypeViewData>> = emptyList()

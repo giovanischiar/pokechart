@@ -8,23 +8,23 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.wear.compose.navigation.SwipeDismissableNavHost
 import androidx.wear.compose.navigation.composable
 import androidx.wear.compose.navigation.rememberSwipeDismissableNavController
-import io.schiar.pokechart.model.datasource.local.CurrentTypesLocalDataSource
+import io.schiar.pokechart.model.datasource.local.ResultTypeLocalDataSource
 import io.schiar.pokechart.model.datasource.local.TypesLocalDataSource
-import io.schiar.pokechart.model.repository.CurrentTypesRepository
+import io.schiar.pokechart.model.repository.ResultTypeRepository
 import io.schiar.pokechart.model.repository.TypesRepository
-import io.schiar.pokechart.view.CurrentTypesScreen
+import io.schiar.pokechart.view.ResultTypeScreen
 import io.schiar.pokechart.view.TypesScreen
 import io.schiar.pokechart.view.theme.PokechartTheme
-import io.schiar.pokechart.viewmodel.CurrentTypesViewModel
+import io.schiar.pokechart.viewmodel.ResultTypeViewModel
 import io.schiar.pokechart.viewmodel.TypesViewModel
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val typesDataSource = TypesLocalDataSource()
-        val currentTypesDataSource = CurrentTypesLocalDataSource()
+        val currentTypesDataSource = ResultTypeLocalDataSource()
         val typesRepository = TypesRepository(typesDataSource, currentTypesDataSource)
-        val currentTypesRepository = CurrentTypesRepository(currentTypesDataSource)
+        val currentTypesRepository = ResultTypeRepository(currentTypesDataSource)
 
         setContent {
             val navController = rememberSwipeDismissableNavController()
@@ -39,8 +39,8 @@ class MainActivity : ComponentActivity() {
                         }
                     }
                     composable("CurrentTypesScreen") {
-                        CurrentTypesScreen(
-                            currentTypesViewModel = CurrentTypesViewModel(currentTypesRepository)
+                        ResultTypeScreen(
+                            resultTypeViewModel = ResultTypeViewModel(currentTypesRepository)
                         )
                     }
                 }
@@ -54,18 +54,18 @@ class MainActivity : ComponentActivity() {
 fun GreetingPreview() {
     val navController = rememberSwipeDismissableNavController()
     val typesDataSource = TypesLocalDataSource()
-    val currentTypesDataSource = CurrentTypesLocalDataSource()
+    val currentTypesDataSource = ResultTypeLocalDataSource()
     val typesRepository = TypesRepository(typesDataSource, currentTypesDataSource)
-    val currentTypesRepository = CurrentTypesRepository(currentTypesDataSource)
+    val currentTypesRepository = ResultTypeRepository(currentTypesDataSource)
     val typesViewModel = TypesViewModel(typesRepository)
-    val currentTypesViewModel = CurrentTypesViewModel(currentTypesRepository)
+    val currentTypesViewModel = ResultTypeViewModel(currentTypesRepository)
 
     PokechartTheme {
         SwipeDismissableNavHost(navController = navController, startDestination = "TypesScreen") {
             composable("TypesScreen") {
                 TypesScreen(typesViewModel) { navController.navigate(route = "CurrentTypesScreen") }
             }
-            composable("CurrentTypesScreen") { CurrentTypesScreen(currentTypesViewModel) }
+            composable("CurrentTypesScreen") { ResultTypeScreen(currentTypesViewModel) }
         }
     }
 }

@@ -10,13 +10,13 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import io.schiar.pokechart.view.viewdata.TypesViewData
+import io.schiar.pokechart.view.viewdata.TypeLayoutViewData
 import io.schiar.pokechart.viewmodel.centralRowColumnMaxSize
 
 @OptIn(ExperimentalLayoutApi::class)
 @Composable
 fun TypesView(
-    types: TypesViewData,
+    types: TypeLayoutViewData,
     selectedTypesIndices: List<Int>,
     onPressTypeAt: (Int) -> Unit,
     lastRowButton: @Composable () -> Unit
