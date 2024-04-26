@@ -33,8 +33,8 @@ class TypesLocalDataSource @Inject constructor(): TypesDataSource {
             normal
                 .strongAgainst()
                 .weakAgainst(rock, ghost, steel)
-                .resistantTo(ghost)
-                .vulnerableTo(fighting),
+                .vulnerableTo(fighting)
+                .immuneTo(ghost),
             fighting
                 .strongAgainst(normal, rock, steel, ice, dark, flying, poison)
                 .weakAgainst(flying, poison, psychic, bug, ghost, fairy)
@@ -43,8 +43,9 @@ class TypesLocalDataSource @Inject constructor(): TypesDataSource {
             flying
                 .strongAgainst(fighting, bug, grass)
                 .weakAgainst(rock, steel, electric)
-                .resistantTo(fighting, ground, bug, grass)
-                .vulnerableTo(rock, electric, ice),
+                .resistantTo(fighting, bug, grass)
+                .vulnerableTo(rock, electric, ice)
+                .immuneTo(ground),
             poison
                 .strongAgainst(grass, fairy)
                 .weakAgainst(poison, ground, rock, ghost, steel)
@@ -53,8 +54,9 @@ class TypesLocalDataSource @Inject constructor(): TypesDataSource {
             ground
                 .strongAgainst(poison, rock, steel, fire, electric)
                 .weakAgainst(flying, bug, grass)
-                .resistantTo(poison, rock, electric)
-                .vulnerableTo(water, grass, ice),
+                .resistantTo(poison, rock)
+                .vulnerableTo(water, grass, ice)
+                .immuneTo(electric),
             rock
                 .strongAgainst(flying, bug, fire, ice)
                 .weakAgainst(fighting, ground, steel)
@@ -68,15 +70,15 @@ class TypesLocalDataSource @Inject constructor(): TypesDataSource {
             ghost
                 .strongAgainst(ghost, psychic)
                 .weakAgainst(normal, dark)
-                .resistantTo(normal, fighting, poison, bug)
-                .vulnerableTo(ghost, dark),
+                .resistantTo(fighting, poison, bug)
+                .vulnerableTo(ghost, dark)
+                .immuneTo(normal),
             steel
                 .strongAgainst(rock, ice, fairy)
                 .weakAgainst(steel, fire, water, electric)
-                .resistantTo(
-                    normal, flying, poison, rock, bug, steel, grass, psychic, ice, dragon, fairy
-                )
-                .vulnerableTo(fighting, ground, fire),
+                .resistantTo(normal, flying, rock, bug, steel, grass, psychic, ice, dragon, fairy)
+                .vulnerableTo(fighting, ground, fire)
+                .immuneTo(poison),
             fire
                 .strongAgainst(bug, steel, grass, ice)
                 .weakAgainst(rock, fire, water, dragon)
@@ -115,13 +117,15 @@ class TypesLocalDataSource @Inject constructor(): TypesDataSource {
             fairy
                 .strongAgainst(fighting, dragon, dark)
                 .weakAgainst(poison, steel, fire)
-                .resistantTo(fighting, bug, dragon, dark)
-                .vulnerableTo(poison, steel),
+                .resistantTo(fighting, bug, dark)
+                .vulnerableTo(poison, steel)
+                .immuneTo(dragon),
             dark
                 .strongAgainst(ghost, psychic)
                 .weakAgainst(fighting, dark, fairy)
-                .resistantTo(ghost, psychic, dark)
-                .vulnerableTo(fighting, bug, fairy),
+                .resistantTo(ghost, dark)
+                .vulnerableTo(fighting, bug, fairy)
+                .immuneTo(psychic),
         )
     }
 

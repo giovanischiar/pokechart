@@ -23,7 +23,7 @@ import io.schiar.pokechart.view.shared.viewdata.TypeViewData
 
 @OptIn(ExperimentalLayoutApi::class)
 @Composable
-fun TypeAndRatioView(typeAndRatioList: List<Pair<TypeViewData, Int>>, titleID: Int) {
+fun TypeAndRatioView(typeAndRatioList: List<Pair<TypeViewData, String>>, titleID: Int) {
     TitleCard(
         onClick = {},
         title = { Text(stringResource(titleID)) },
@@ -39,7 +39,7 @@ fun TypeAndRatioView(typeAndRatioList: List<Pair<TypeViewData, Int>>, titleID: I
                         tint = type.color
                     )
 
-                    if (ratio > 1) {
+                    if (ratio != "1") {
                         Text(
                             modifier = Modifier.align(Alignment.BottomEnd),
                             text = "${ratio}x",

@@ -1,8 +1,9 @@
 package io.schiar.pokechart.viewmodel
 
 import io.schiar.pokechart.model.Type
-import io.schiar.pokechart.view.shared.viewdata.TypeViewData
 import io.schiar.pokechart.view.shared.viewdata.TypeLayoutViewData
+import io.schiar.pokechart.view.shared.viewdata.TypeViewData
+import java.text.DecimalFormat
 
 fun Type.toViewData(): TypeViewData {
     return TypeViewData(
@@ -14,12 +15,13 @@ fun Type.toViewData(): TypeViewData {
     )
 }
 
-fun List<Any>.toViewDataPairList(): List<Pair<TypeViewData, Int>> {
+fun List<Any>.toViewDataPairList(): List<Pair<TypeViewData, String>> {
     if (this.isEmpty()) return emptyList()
+    val decimalFormat = DecimalFormat("#.###")
     return when (this[0]) {
-        is Type -> map { type -> Pair((type as Type).toViewData(), 1) }
+        is Type -> map { type -> Pair((type as Type).toViewData(), "1") }
         is Pair<*, *> -> map { it as Pair<*, *> }
-            .map { (type, ratio) -> Pair((type as Type).toViewData(), ratio as Int) }
+            .map { (type, ratio) -> Pair((type as Type).toViewData(), decimalFormat.format(ratio)) }
         else -> emptyList()
     }
 }
