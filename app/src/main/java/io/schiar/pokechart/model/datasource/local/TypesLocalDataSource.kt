@@ -4,8 +4,9 @@ import io.schiar.pokechart.model.Type
 import io.schiar.pokechart.model.datasource.TypesDataSource
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
+import javax.inject.Inject
 
-class TypesLocalDataSource: TypesDataSource {
+class TypesLocalDataSource @Inject constructor(): TypesDataSource {
     private val types: List<Type>
 
     init {

@@ -6,8 +6,9 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.filterNotNull
 import kotlinx.coroutines.flow.update
+import javax.inject.Inject
 
-class ResultTypeLocalDataSource: ResultTypeDataSource {
+class ResultTypeLocalDataSource @Inject constructor(): ResultTypeDataSource {
     private var resultType: Type? = null
     private val resultTypeStateFlow = MutableStateFlow(resultType)
 

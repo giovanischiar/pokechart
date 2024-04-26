@@ -1,10 +1,10 @@
 package io.schiar.pokechart.model.repository
 
 import io.schiar.pokechart.model.datasource.ResultTypeDataSource
-import io.schiar.pokechart.model.datasource.local.ResultTypeLocalDataSource
+import javax.inject.Inject
 
-class ResultTypeRepository(
-    currentTypesDataSource: ResultTypeDataSource = ResultTypeLocalDataSource()
+class ResultTypeRepository @Inject constructor(
+    currentTypesDataSource: ResultTypeDataSource
 ) {
     val resultTypeFlow = currentTypesDataSource.retrieveResultType()
 }
