@@ -17,12 +17,12 @@ import androidx.wear.compose.foundation.lazy.ScalingLazyColumnDefaults
 import androidx.wear.compose.foundation.lazy.rememberScalingLazyListState
 import androidx.wear.compose.foundation.rememberActiveFocusRequester
 import io.schiar.pokechart.R
-import io.schiar.pokechart.view.shared.viewdata.TypeViewData
+import io.schiar.pokechart.view.shared.viewdata.ResultTypeViewData
 import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalWearFoundationApi::class)
 @Composable
-fun ResultTypeView(resultType: TypeViewData) {
+fun ResultTypeView(resultType: ResultTypeViewData) {
     val listState = rememberScalingLazyListState()
     val focusRequester = rememberActiveFocusRequester()
     val coroutineScope = rememberCoroutineScope()
@@ -45,28 +45,28 @@ fun ResultTypeView(resultType: TypeViewData) {
         )
     ) {
         item {
-            TypeAndRatioView(
-                typeAndRatioList = resultType.resistant, titleID = R.string.resistant_to
+            TypeEffectivenessView(
+                typeEffectivenessList = resultType.resistant, titleID = R.string.resistant_to
             )
         }
 
         item {
-            TypeAndRatioView(
-                typeAndRatioList = resultType.vulnerable, titleID = R.string.vulnerable_to
+            TypeEffectivenessView(
+                typeEffectivenessList = resultType.vulnerable, titleID = R.string.vulnerable_to
             )
         }
 
-        if (resultType.names.size != 1) return@ScalingLazyColumn
+        if (resultType.types.size != 1) return@ScalingLazyColumn
 
         item {
-            TypeAndRatioView(
-                typeAndRatioList = resultType.strong, titleID = R.string.strong_against
+            TypeEffectivenessView(
+                typeEffectivenessList = resultType.strong, titleID = R.string.strong_against
             )
         }
 
         item {
-            TypeAndRatioView(
-                typeAndRatioList = resultType.weak, titleID = R.string.weak_against
+            TypeEffectivenessView(
+                typeEffectivenessList = resultType.weak, titleID = R.string.weak_against
             )
         }
     }

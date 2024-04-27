@@ -10,7 +10,7 @@ import javax.inject.Inject
 class ResultTypeViewModel @Inject constructor(
      currentTypesRepository: ResultTypeRepository
 ): ViewModel() {
-    val resultTypeFlow = currentTypesRepository.resultTypeFlow.map { types ->
-        types.toViewData()
+    val resultTypeFlow = currentTypesRepository.resultTypeFlow.map { resultType ->
+        resultType.toViewData()
     }
 }

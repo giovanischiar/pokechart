@@ -15,7 +15,7 @@ fun ResultTypeScreen(resultTypeViewModel: ResultTypeViewModel = hiltViewModel())
     val resultType = optionalResultType ?: return
 
     Column {
-        TypesBar(typeNames = resultType.names)
+        TypesBar(types = resultType.types)
         ResultTypeView(resultType = resultType)
     }
 }

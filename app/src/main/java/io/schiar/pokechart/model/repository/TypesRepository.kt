@@ -1,7 +1,7 @@
 package io.schiar.pokechart.model.repository
 
 import io.schiar.pokechart.model.Type
-import io.schiar.pokechart.model.asType
+import io.schiar.pokechart.model.asResultType
 import io.schiar.pokechart.model.datasource.ResultTypeDataSource
 import io.schiar.pokechart.model.datasource.TypesDataSource
 import kotlinx.coroutines.flow.Flow
@@ -17,6 +17,6 @@ class TypesRepository @Inject constructor(
 
     fun addTypesToResultTypeTheTypesAt(indices: List<Int>) {
         val types = indices.mapNotNull { index -> types.getOrNull(index) }
-        currentTypesDataSource.updateResultType(resultType = types.asType())
+        currentTypesDataSource.updateResultType(resultType = types.asResultType())
     }
 }

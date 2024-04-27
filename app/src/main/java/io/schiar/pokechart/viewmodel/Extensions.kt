@@ -1,29 +1,42 @@
 package io.schiar.pokechart.viewmodel
 
+import io.schiar.pokechart.model.ResultType
 import io.schiar.pokechart.model.Type
+import io.schiar.pokechart.model.TypeEffectiveness
+import io.schiar.pokechart.view.shared.viewdata.ResultTypeViewData
+import io.schiar.pokechart.view.shared.viewdata.TypeEffectivenessViewData
 import io.schiar.pokechart.view.shared.viewdata.TypeLayoutViewData
 import io.schiar.pokechart.view.shared.viewdata.TypeViewData
 import java.text.DecimalFormat
 
-fun Type.toViewData(): TypeViewData {
-    return TypeViewData(
-        name = name,
-        strong = strong.toViewDataPairList(),
-        weak = weak.toViewDataPairList(),
-        resistant = resistant.toViewDataPairList(),
-        vulnerable = vulnerable.toViewDataPairList()
+fun ResultType.toViewData(): ResultTypeViewData {
+    return ResultTypeViewData(
+        types = types.toViewDataList(),
+        resistant = resistant.toTypeEffectivenessViewDataList(),
+        vulnerable = vulnerable.toTypeEffectivenessViewDataList(),
+        strong = strong.toTypeEffectivenessViewDataList(),
+        weak = weak.toTypeEffectivenessViewDataList()
     )
 }
 
-fun List<Any>.toViewDataPairList(): List<Pair<TypeViewData, String>> {
-    if (this.isEmpty()) return emptyList()
-    val decimalFormat = DecimalFormat("#.###")
-    return when (this[0]) {
-        is Type -> map { type -> Pair((type as Type).toViewData(), "1") }
-        is Pair<*, *> -> map { it as Pair<*, *> }
-            .map { (type, ratio) -> Pair((type as Type).toViewData(), decimalFormat.format(ratio)) }
-        else -> emptyList()
-    }
+fun Type.toViewData(): TypeViewData {
+    return TypeViewData(name = name)
+}
+
+fun TypeEffectiveness.toViewData(): TypeEffectivenessViewData {
+    val decimalFormat = DecimalFormat(decimalFormatForMultiplierPattern)
+    return TypeEffectivenessViewData(
+        type = type.toViewData(),
+        multiplier = decimalFormat.format(multiplier)
+    )
+}
+
+fun List<Type>.toViewDataList(): List<TypeViewData> {
+    return map { type -> type.toViewData() }
+}
+
+fun List<TypeEffectiveness>.toTypeEffectivenessViewDataList(): List<TypeEffectivenessViewData> {
+    return map { typeEffectiveness -> typeEffectiveness.toViewData() }
 }
 
 fun List<Type>.toTypesViewData(): TypeLayoutViewData {

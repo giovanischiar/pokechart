@@ -18,14 +18,13 @@ import io.schiar.pokechart.view.shared.stringResourceID
 import io.schiar.pokechart.view.shared.viewdata.TypeViewData
 
 @Composable
-fun TypesBar(typeNames: List<String>) {
+fun TypesBar(types: List<TypeViewData>) {
     Box(
         modifier = Modifier.fillMaxWidth().padding(vertical = 5.dp),
         contentAlignment = Alignment.Center
     ) {
         Row {
-            typeNames.map { typeName ->
-                val type = TypeViewData(name = typeName)
+            types.map { type ->
                 Icon(
                     modifier = Modifier.size(20.dp),
                     painter = painterResource(id = type.iconResourceID),

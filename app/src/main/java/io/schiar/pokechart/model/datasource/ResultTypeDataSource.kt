@@ -1,9 +1,9 @@
 package io.schiar.pokechart.model.datasource
 
-import io.schiar.pokechart.model.Type
+import io.schiar.pokechart.model.ResultType
 import kotlinx.coroutines.flow.Flow
 
 interface ResultTypeDataSource {
-    fun retrieveResultType(): Flow<Type>
-    fun updateResultType(resultType: Type)
+    fun retrieveResultType(): Flow<ResultType>
+    fun updateResultType(resultType: ResultType)
 }

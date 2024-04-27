@@ -19,18 +19,18 @@ import androidx.wear.compose.material.TitleCard
 import io.schiar.pokechart.view.shared.color
 import io.schiar.pokechart.view.shared.iconResourceID
 import io.schiar.pokechart.view.shared.stringResourceID
-import io.schiar.pokechart.view.shared.viewdata.TypeViewData
+import io.schiar.pokechart.view.shared.viewdata.TypeEffectivenessViewData
 
 @OptIn(ExperimentalLayoutApi::class)
 @Composable
-fun TypeAndRatioView(typeAndRatioList: List<Pair<TypeViewData, String>>, titleID: Int) {
+fun TypeEffectivenessView(typeEffectivenessList: List<TypeEffectivenessViewData>, titleID: Int) {
     TitleCard(
         onClick = {},
         title = { Text(stringResource(titleID)) },
         contentColor = MaterialTheme.colors.onSurface
     ) {
         FlowRow {
-            for ((type, ratio) in typeAndRatioList) {
+            for ((type, multiplier) in typeEffectivenessList) {
                 Box {
                     Icon(
                         modifier = Modifier.size(20.dp),
@@ -39,10 +39,10 @@ fun TypeAndRatioView(typeAndRatioList: List<Pair<TypeViewData, String>>, titleID
                         tint = type.color
                     )
 
-                    if (ratio != "1") {
+                    if (multiplier != "1") {
                         Text(
                             modifier = Modifier.align(Alignment.BottomEnd),
-                            text = "${ratio}x",
+                            text = "${multiplier}x",
                             fontSize = 8.sp,
                             color = Color.White
                         )

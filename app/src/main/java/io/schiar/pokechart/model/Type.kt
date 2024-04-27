@@ -4,75 +4,58 @@ data class Type(
     val name: String,
     val strong: List<Type> = emptyList(),
     val weak: List<Type> = emptyList(),
-    val resistant: List<Pair<Type, Number>> = emptyList(),
-    val vulnerable: List<Pair<Type, Number>> = emptyList(),
+    val resistant: List<TypeEffectiveness> = emptyList(),
+    val vulnerable: List<TypeEffectiveness> = emptyList(),
 ): Comparable<Type> {
     fun strongAgainst(vararg types: Type): Type {
-        return Type(
-            name = name,
-            strong = types.asList() + strong,
-            weak = weak,
-            resistant = resistant,
-            vulnerable = vulnerable
-        )
+        val strong = types.asList() + strong
+        return Type(name, strong, weak, resistant, vulnerable)
     }
 
     fun weakAgainst(vararg types: Type): Type {
-        return Type(
-            name = name,
-            strong = strong,
-            weak = types.asList() + weak,
-            resistant = resistant,
-            vulnerable = vulnerable
-        )
+        val weak = types.asList() + weak
+        return Type(name, strong, weak, resistant, vulnerable)
     }
 
     fun resistantTo(vararg types: Type): Type {
-        return Type(
-            name = name,
-            strong = strong,
-            weak = weak,
-            resistant = (types.map { type -> Pair(type, 1) } + resistant)
-                .sortedBy { (type) -> type },
-            vulnerable = vulnerable.sortedBy { (type) -> type }
-        )
+        val resistant = (types.asTypeEffectivenessList() + resistant).sortedBy { (type) -> type }
+        return Type(name, strong, weak, resistant, vulnerable)
     }
 
     fun vulnerableTo(vararg types: Type): Type {
-        return Type(
-            name = name,
-            strong = strong,
-            weak = weak,
-            resistant = resistant,
-            vulnerable = (types.map { type -> Pair(type, 1) } + vulnerable)
-                .sortedBy { (type) -> type }
-        )
+        val vulnerable = (types.asTypeEffectivenessList() + vulnerable).sortedBy { (type) -> type }
+        return Type(name, strong, weak, resistant, vulnerable)
     }
 
     fun immuneTo(vararg types: Type): Type {
-        return Type(
-            name = name,
-            strong = strong,
-            weak = weak,
-            resistant = (types.map { type -> Pair(type, 2) } + resistant)
-                .sortedBy { (type) -> type },
-            vulnerable = vulnerable
-        )
+        val resistant = (types.asTypeEffectivenessList(multiplier = 2) + resistant)
+            .sortedBy { (type) -> type }
+        return Type(name, strong, weak, resistant, vulnerable)
     }
 
-    operator fun plus(other: Type): Type {
-        return Type(
-            name = name + " " + other.name,
-            strong = strong + other.strong,
-            weak = weak + other.weak,
+    operator fun plus(other: Type): ResultType {
+        return ResultType(
+            types = listOf(this, other),
             resistant = resistant.newResistantListConsidering(
+                vulnerable,
                 otherVulnerable = other.vulnerable,
                 otherResistant = other.resistant
             ).sortedBy { (type) -> type },
             vulnerable = vulnerable.newVulnerableListConsidering(
+                resistant,
                 otherVulnerable = other.vulnerable,
                 otherResistant = other.resistant
             ).sortedBy { (type) -> type }
+        )
+    }
+
+    fun asResultType(): ResultType {
+        return ResultType(
+            types = listOf(this),
+            resistant = resistant,
+            vulnerable = vulnerable,
+            strong = strong.asTypeEffectivenessList(),
+            weak = weak.asTypeEffectivenessList()
         )
     }
 
