@@ -6,9 +6,8 @@ data class TypeEffectiveness(val type: Type, val multiplier: Number) {
         return TypeEffectiveness(type, multiplier = newMultiplier)
     }
 
-    operator fun minus(other: TypeEffectiveness): TypeEffectiveness? {
+    operator fun minus(other: TypeEffectiveness): TypeEffectiveness {
         val newMultiplier = multiplier.toDouble() - other.multiplier.toDouble()
-        if (newMultiplier <= 0) return null
         return TypeEffectiveness(type, multiplier = newMultiplier)
     }
 }

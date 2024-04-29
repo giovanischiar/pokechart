@@ -5,27 +5,26 @@ val List<TypeEffectiveness>.types: List<Type> get() { return map { (type) -> typ
 fun List<TypeEffectiveness>.decreaseMultiplierOrRemoveIfContainsIn(
     other: List<TypeEffectiveness>
 ): List<TypeEffectiveness> {
-    return mapNotNull { typeEffectiveness ->
-        var newTypeEffectiveness: TypeEffectiveness? = typeEffectiveness
-        val otherTypeIndex = other.types.indexOf(typeEffectiveness.type)
-        if (otherTypeIndex != -1) {
-            newTypeEffectiveness = typeEffectiveness - other[otherTypeIndex]
+    return (this + other)
+        .groupBy { (type) -> type }
+        .mapNotNull { (_, typeEffectivenessList) ->
+            typeEffectivenessList
+                .reduce { acc, typeEffectiveness -> acc - typeEffectiveness }
+                .takeIf { it.multiplier.toInt() > 0 }
         }
-        newTypeEffectiveness
-    }
 }
 
 fun List<TypeEffectiveness>.increaseMultiplierAndRemoveDuplicates(): List<TypeEffectiveness> {
-    return mutableListOf<TypeEffectiveness>().apply {
-        for (typeEffectiveness in this@increaseMultiplierAndRemoveDuplicates) {
-            val indexOfTypeEffectiveness = this.types.indexOf(typeEffectiveness.type)
-            if (indexOfTypeEffectiveness != -1) {
-                this[indexOfTypeEffectiveness] = this[indexOfTypeEffectiveness] + typeEffectiveness
-                continue
-            }
-            add(typeEffectiveness)
+    return groupBy { (type) -> type }
+        .map { (_, typeEffectivenessList) -> typeEffectivenessList
+            .reduce { acc, typeEffectiveness ->  acc + typeEffectiveness }
         }
-    }
+}
+
+fun List<TypeEffectiveness>.filterTypesThatContainsIn(
+    other: List<TypeEffectiveness>
+): List<TypeEffectiveness> {
+    return filter { (type) -> other.types.contains(type) }
 }
 
 fun List<TypeEffectiveness>.newResistantListConsidering(
@@ -33,9 +32,12 @@ fun List<TypeEffectiveness>.newResistantListConsidering(
     otherVulnerable: List<TypeEffectiveness>,
     otherResistant: List<TypeEffectiveness>
 ): List<TypeEffectiveness> {
+    val vulnerableThatContainsInResistant = otherVulnerable.filterTypesThatContainsIn(other = this)
+    val resistantThatContainsInVulnerable = otherResistant.filterTypesThatContainsIn(vulnerable)
+
     return (
-        decreaseMultiplierOrRemoveIfContainsIn(otherVulnerable) +
-        otherResistant.decreaseMultiplierOrRemoveIfContainsIn(other = vulnerable)
+        decreaseMultiplierOrRemoveIfContainsIn(vulnerableThatContainsInResistant) +
+        otherResistant.decreaseMultiplierOrRemoveIfContainsIn(resistantThatContainsInVulnerable)
     ).increaseMultiplierAndRemoveDuplicates()
 }
 
@@ -44,8 +46,11 @@ fun List<TypeEffectiveness>.newVulnerableListConsidering(
     otherVulnerable: List<TypeEffectiveness>,
     otherResistant: List<TypeEffectiveness>
 ): List<TypeEffectiveness> {
+    val resistantThatContainsInVulnerable = otherResistant.filterTypesThatContainsIn(other = this)
+    val vulnerableThatContainsInResistant = otherVulnerable.filterTypesThatContainsIn(resistant)
+
     return (
-        decreaseMultiplierOrRemoveIfContainsIn(otherResistant) +
-        otherVulnerable.decreaseMultiplierOrRemoveIfContainsIn(other = resistant)
+        decreaseMultiplierOrRemoveIfContainsIn(resistantThatContainsInVulnerable) +
+        otherVulnerable.decreaseMultiplierOrRemoveIfContainsIn(vulnerableThatContainsInResistant)
     ).increaseMultiplierAndRemoveDuplicates()
 }
