@@ -52,21 +52,21 @@ android {
 
 dependencies {
 
-    implementation("androidx.core:core-ktx:1.12.0")
+    implementation("androidx.core:core-ktx:1.13.0")
     implementation("com.google.android.gms:play-services-wearable:18.1.0")
 
     // General compose dependencies
-    implementation("androidx.activity:activity-compose:1.8.0")
-    implementation("androidx.compose.ui:ui-tooling-preview:1.5.4")
+    implementation("androidx.activity:activity-compose:1.9.0")
+    implementation("androidx.compose.ui:ui-tooling-preview:1.6.6")
 
     // Compose for Wear OS Dependencies
-    implementation("androidx.wear.compose:compose-material:1.2.1")
+    implementation("androidx.wear.compose:compose-material:1.3.1")
 
     // Foundation
-    implementation("androidx.wear.compose:compose-foundation:1.2.1")
+    implementation("androidx.wear.compose:compose-foundation:1.3.1")
 
     // Navigation
-    implementation("androidx.wear.compose:compose-navigation:1.2.1")
+    implementation("androidx.wear.compose:compose-navigation:1.3.1")
 
     // Hilt
     implementation("com.google.dagger:hilt-android:2.50")
