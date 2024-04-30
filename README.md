@@ -16,8 +16,8 @@
 |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Screenshot&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Description&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|
 |:-:|:-:|
 |<img src="readme-res/screenshots/types-screen.png" width="384" height="384">|This is what the app looks like when you open it. To input the types, select them by pressing each one, and then click on the last button at the bottom.|
-|<img src="readme-res/screenshots/select-single-type.gif" width="384" height="384">|You can select a single type. When only one type is selected, its strengths and weaknesses are also displayed, used for attacks from that type.|
-|<img src="readme-res/screenshots/selecting-multiple-type.gif" width="384" height="384">|You can also select more than one type, allowing you to check the resistance and vulnerability types for a Pokémon with 2 types.|
+|<img src="readme-res/screenshots/selecting-single-type.gif" width="384" height="384">|You can select a single type. When only one type is selected, its strengths and weaknesses are also displayed, used for attacks from that type.|
+|<img src="readme-res/screenshots/selecting-multiple-types.gif" width="384" height="384">|You can also select more than one type, allowing you to check the resistance and vulnerability types for a Pokémon with 2 types.|
 
 # Technologies
 |Technology|Purpose|
