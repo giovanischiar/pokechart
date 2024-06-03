@@ -3,8 +3,9 @@ package io.schiar.pokechart.viewmodel
 import androidx.lifecycle.ViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import io.schiar.pokechart.model.repository.TypesRepository
+import io.schiar.pokechart.view.types.uistate.TypeLayoutUiState
+import io.schiar.pokechart.view.types.uistate.TypesIndicesUiState
 import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.update
 import javax.inject.Inject
@@ -13,11 +14,11 @@ import javax.inject.Inject
 class TypesViewModel @Inject constructor(
     private val typesRepository: TypesRepository
 ): ViewModel() {
-    val typesFlow = typesRepository.typesFlow.map { types -> types.toTypesViewData() }
+    val typeLayoutUiStateFlow = typesRepository.typesFlow
+        .map { types -> TypeLayoutUiState.TypeLayoutLoaded(types.toTypeLayoutViewData()) }
     private val selectedTypesIndicesMutableStateFlow = MutableStateFlow(value = listOf<Int>())
-    val selectedTypesIndicesStateFlow: StateFlow<List<Int>> = selectedTypesIndicesMutableStateFlow
-    private val shouldNavigateMutableStateFlow = MutableStateFlow(value = false)
-    val shouldNavigateStateFlow: StateFlow<Boolean> = shouldNavigateMutableStateFlow
+    val selectedTypesIndicesUiStateStateFlow = selectedTypesIndicesMutableStateFlow
+        .map { TypesIndicesUiState.TypesIndicesLoaded(it) }
 
     fun selectTypeAt(index: Int) {
         selectedTypesIndicesMutableStateFlow.update { selectedTypesIndices ->
@@ -31,11 +32,6 @@ class TypesViewModel @Inject constructor(
         val selectedTypesIndices = selectedTypesIndicesMutableStateFlow.value
         if (selectedTypesIndices.isEmpty()) return
         typesRepository.addTypesToResultTypeTheTypesAt(indices = selectedTypesIndices)
-        shouldNavigateMutableStateFlow.update { true }
-    }
-
-    fun navigationInitiated() {
-        shouldNavigateMutableStateFlow.update { false }
         selectedTypesIndicesMutableStateFlow.update { emptyList() }
     }
 }

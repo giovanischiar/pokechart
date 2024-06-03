@@ -7,14 +7,13 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavHostController
 import androidx.wear.compose.navigation.SwipeDismissableNavHost
-import androidx.wear.compose.navigation.composable
 import androidx.wear.compose.navigation.rememberSwipeDismissableNavController
 import dagger.hilt.android.AndroidEntryPoint
 import io.schiar.pokechart.view.resulttype.resultTypeScreen
-import io.schiar.pokechart.view.shared.Route.RESULT_TYPE_ROUTE
+import io.schiar.pokechart.view.shared.Route
 import io.schiar.pokechart.view.shared.Route.TYPES_ROUTE
 import io.schiar.pokechart.view.shared.theme.PokechartTheme
-import io.schiar.pokechart.view.types.TypesScreen
+import io.schiar.pokechart.view.types.typesScreen
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
@@ -30,11 +29,11 @@ class MainActivity : ComponentActivity() {
                 navController = navController,
                 startDestination = TYPES_ROUTE.id
             ) {
-                composable(TYPES_ROUTE.id) {
-                    TypesScreen {
-                        navController.navigate(route = RESULT_TYPE_ROUTE.id)
+                typesScreen(
+                    navigateToResultTypes = {
+                        navController.navigate(route = Route.RESULT_TYPE_ROUTE.id)
                     }
-                }
+                )
                 resultTypeScreen()
             }
         }

@@ -39,7 +39,7 @@ fun List<TypeEffectiveness>.toTypeEffectivenessViewDataList(): List<TypeEffectiv
     return map { typeEffectiveness -> typeEffectiveness.toViewData() }
 }
 
-fun List<Type>.toTypesViewData(): TypeLayoutViewData {
+fun List<Type>.toTypeLayoutViewData(): TypeLayoutViewData {
     if (size < upperRowTypeSize) return TypeLayoutViewData()
     val lastRowOffset = size - 1
     val upperRowTypes = subList(0, upperRowTypeSize)
