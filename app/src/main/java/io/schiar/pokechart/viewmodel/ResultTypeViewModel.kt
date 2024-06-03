@@ -3,6 +3,7 @@ package io.schiar.pokechart.viewmodel
 import androidx.lifecycle.ViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import io.schiar.pokechart.model.repository.ResultTypeRepository
+import io.schiar.pokechart.view.resulttype.ResultTypeUiState
 import kotlinx.coroutines.flow.map
 import javax.inject.Inject
 
@@ -10,7 +11,7 @@ import javax.inject.Inject
 class ResultTypeViewModel @Inject constructor(
      currentTypesRepository: ResultTypeRepository
 ): ViewModel() {
-    val resultTypeFlow = currentTypesRepository.resultTypeFlow.map { resultType ->
-        resultType.toViewData()
+    val resultTypeUiStateFlow = currentTypesRepository.resultTypeFlow.map { resultType ->
+        ResultTypeUiState.ResultTypeLoaded(resultType.toViewData())
     }
 }

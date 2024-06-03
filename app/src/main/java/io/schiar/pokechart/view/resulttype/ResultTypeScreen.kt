@@ -1,21 +1,30 @@
 package io.schiar.pokechart.view.resulttype
 
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.collectAsState
-import androidx.compose.runtime.getValue
-import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.wear.compose.material.CircularProgressIndicator
 import io.schiar.pokechart.view.resulttype.component.ResultTypeView
 import io.schiar.pokechart.view.resulttype.component.TypesBar
-import io.schiar.pokechart.viewmodel.ResultTypeViewModel
 
 @Composable
-fun ResultTypeScreen(resultTypeViewModel: ResultTypeViewModel = hiltViewModel()) {
-    val optionalResultType by resultTypeViewModel.resultTypeFlow.collectAsState(initial = null)
-    val resultType = optionalResultType ?: return
+fun ResultTypeScreen(resultTypeUiState: ResultTypeUiState) {
+    when (resultTypeUiState) {
+        is ResultTypeUiState.Loading -> {
+            Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
+                CircularProgressIndicator()
+            }
+        }
 
-    Column {
-        TypesBar(types = resultType.types)
-        ResultTypeView(resultType = resultType)
+        is ResultTypeUiState.ResultTypeLoaded -> {
+            val resultType = resultTypeUiState.resultType
+            Column {
+                TypesBar(types = resultType.types)
+                ResultTypeView(resultType = resultType)
+            }
+        }
     }
 }
