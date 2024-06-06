@@ -1,4 +1,5 @@
 <h1 align="center">
+  <img src="readme-res/ic_launcher.svg" width="100" height="100"><br>
   Pokechart
 </h1>
 
