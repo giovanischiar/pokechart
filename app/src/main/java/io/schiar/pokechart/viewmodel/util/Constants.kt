@@ -1,4 +1,4 @@
-package io.schiar.pokechart.viewmodel
+package io.schiar.pokechart.viewmodel.util
 
 const val upperRowTypeSize = 2
 const val centralRowColumnMaxSize = 5

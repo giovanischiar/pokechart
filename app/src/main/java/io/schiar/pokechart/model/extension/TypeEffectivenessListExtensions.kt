@@ -1,4 +1,7 @@
-package io.schiar.pokechart.model
+package io.schiar.pokechart.model.extension
+
+import io.schiar.pokechart.model.Type
+import io.schiar.pokechart.model.TypeEffectiveness
 
 val List<TypeEffectiveness>.types: List<Type> get() { return map { (type) -> type } }
 

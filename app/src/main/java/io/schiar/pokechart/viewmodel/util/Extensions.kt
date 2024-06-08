@@ -1,4 +1,4 @@
-package io.schiar.pokechart.viewmodel
+package io.schiar.pokechart.viewmodel.util
 
 import io.schiar.pokechart.model.ResultType
 import io.schiar.pokechart.model.Type

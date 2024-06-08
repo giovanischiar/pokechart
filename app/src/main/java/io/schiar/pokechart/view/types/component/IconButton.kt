@@ -13,9 +13,9 @@ import androidx.wear.compose.material.ButtonBorder
 import androidx.wear.compose.material.ButtonColors
 import androidx.wear.compose.material.ButtonDefaults
 import androidx.wear.compose.material.Icon
-import io.schiar.pokechart.viewmodel.iconButtonIconPadding
-import io.schiar.pokechart.viewmodel.iconButtonPadding
-import io.schiar.pokechart.viewmodel.iconButtonSize
+import io.schiar.pokechart.viewmodel.util.iconButtonIconPadding
+import io.schiar.pokechart.viewmodel.util.iconButtonPadding
+import io.schiar.pokechart.viewmodel.util.iconButtonSize
 
 @Composable
 fun IconButton(

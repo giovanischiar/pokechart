@@ -5,6 +5,7 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import io.schiar.pokechart.model.repository.TypesRepository
 import io.schiar.pokechart.view.types.uistate.TypeLayoutUiState
 import io.schiar.pokechart.view.types.uistate.TypesIndicesUiState
+import io.schiar.pokechart.viewmodel.util.toTypeLayoutViewData
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.update

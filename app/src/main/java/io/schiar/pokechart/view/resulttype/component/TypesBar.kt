@@ -12,9 +12,9 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.wear.compose.material.Icon
-import io.schiar.pokechart.view.shared.color
-import io.schiar.pokechart.view.shared.iconResourceID
-import io.schiar.pokechart.view.shared.stringResourceID
+import io.schiar.pokechart.view.shared.util.color
+import io.schiar.pokechart.view.shared.util.iconResourceID
+import io.schiar.pokechart.view.shared.util.stringResourceID
 import io.schiar.pokechart.view.shared.viewdata.TypeViewData
 
 @Composable

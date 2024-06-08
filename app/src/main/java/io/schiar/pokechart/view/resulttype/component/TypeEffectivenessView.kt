@@ -16,9 +16,9 @@ import androidx.wear.compose.material.Icon
 import androidx.wear.compose.material.MaterialTheme
 import androidx.wear.compose.material.Text
 import androidx.wear.compose.material.TitleCard
-import io.schiar.pokechart.view.shared.color
-import io.schiar.pokechart.view.shared.iconResourceID
-import io.schiar.pokechart.view.shared.stringResourceID
+import io.schiar.pokechart.view.shared.util.color
+import io.schiar.pokechart.view.shared.util.iconResourceID
+import io.schiar.pokechart.view.shared.util.stringResourceID
 import io.schiar.pokechart.view.shared.viewdata.TypeEffectivenessViewData
 
 @OptIn(ExperimentalLayoutApi::class)

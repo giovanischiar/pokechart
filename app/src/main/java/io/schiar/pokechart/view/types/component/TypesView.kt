@@ -11,7 +11,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import io.schiar.pokechart.view.shared.viewdata.TypeLayoutViewData
-import io.schiar.pokechart.viewmodel.centralRowColumnMaxSize
+import io.schiar.pokechart.viewmodel.util.centralRowColumnMaxSize
 
 @OptIn(ExperimentalLayoutApi::class)
 @Composable

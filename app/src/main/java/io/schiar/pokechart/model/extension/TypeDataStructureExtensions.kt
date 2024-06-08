@@ -1,4 +1,8 @@
-package io.schiar.pokechart.model
+package io.schiar.pokechart.model.extension
+
+import io.schiar.pokechart.model.ResultType
+import io.schiar.pokechart.model.Type
+import io.schiar.pokechart.model.TypeEffectiveness
 
 fun Collection<Type>.asResultType(): ResultType {
     return fold(initial = ResultType()) { acc, type -> acc + type }

@@ -5,7 +5,7 @@ import androidx.compose.runtime.getValue
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavGraphBuilder
 import androidx.wear.compose.navigation.composable
-import io.schiar.pokechart.view.shared.Route
+import io.schiar.pokechart.view.shared.util.Route
 import io.schiar.pokechart.viewmodel.ResultTypeViewModel
 
 fun NavGraphBuilder.resultTypeScreen() {

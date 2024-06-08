@@ -1,9 +1,9 @@
 package io.schiar.pokechart.model.repository
 
 import io.schiar.pokechart.model.Type
-import io.schiar.pokechart.model.asResultType
 import io.schiar.pokechart.model.datasource.ResultTypeDataSource
 import io.schiar.pokechart.model.datasource.TypesDataSource
+import io.schiar.pokechart.model.extension.asResultType
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.onEach
 import javax.inject.Inject

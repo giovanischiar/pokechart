@@ -6,9 +6,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.wear.compose.material.ButtonDefaults
-import io.schiar.pokechart.view.shared.color
-import io.schiar.pokechart.view.shared.iconResourceID
-import io.schiar.pokechart.view.shared.stringResourceID
+import io.schiar.pokechart.view.shared.util.color
+import io.schiar.pokechart.view.shared.util.iconResourceID
+import io.schiar.pokechart.view.shared.util.stringResourceID
 import io.schiar.pokechart.view.shared.viewdata.TypeViewData
 
 @Composable

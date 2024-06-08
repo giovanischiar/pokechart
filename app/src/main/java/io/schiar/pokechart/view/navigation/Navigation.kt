@@ -5,7 +5,7 @@ import androidx.navigation.NavHostController
 import androidx.wear.compose.navigation.SwipeDismissableNavHost
 import androidx.wear.compose.navigation.rememberSwipeDismissableNavController
 import io.schiar.pokechart.view.resulttype.resultTypeScreen
-import io.schiar.pokechart.view.shared.Route
+import io.schiar.pokechart.view.shared.util.Route
 import io.schiar.pokechart.view.shared.theme.PokechartTheme
 import io.schiar.pokechart.view.types.typesScreen
 

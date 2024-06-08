@@ -5,7 +5,7 @@ import androidx.compose.runtime.getValue
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavGraphBuilder
 import androidx.wear.compose.navigation.composable
-import io.schiar.pokechart.view.shared.Route
+import io.schiar.pokechart.view.shared.util.Route
 import io.schiar.pokechart.view.types.uistate.TypeLayoutUiState
 import io.schiar.pokechart.view.types.uistate.TypesIndicesUiState
 import io.schiar.pokechart.viewmodel.TypesViewModel

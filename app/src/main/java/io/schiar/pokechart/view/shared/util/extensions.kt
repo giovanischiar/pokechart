@@ -1,4 +1,4 @@
-package io.schiar.pokechart.view.shared
+package io.schiar.pokechart.view.shared.util
 
 import androidx.compose.ui.graphics.Color
 import io.schiar.pokechart.R

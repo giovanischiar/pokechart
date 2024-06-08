@@ -1,5 +1,9 @@
 package io.schiar.pokechart.model
 
+import io.schiar.pokechart.model.extension.asTypeEffectivenessList
+import io.schiar.pokechart.model.extension.newResistantListConsidering
+import io.schiar.pokechart.model.extension.newVulnerableListConsidering
+
 data class Type(
     val name: String,
     val strong: List<Type> = emptyList(),
