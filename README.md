@@ -10,6 +10,9 @@
 
 - [Use Cases](#use-cases)
 - [Technologies](#technologies)
+- [Structure](#structure)
+- [Diagrams](#diagrams)
+  - [Package `io.schiar.pokechart`](#package-ioschiarpokechart)
 - [Future Tasks](#future-tasks)
 
 ## Use Case
@@ -24,6 +27,18 @@
 |Technology|Purpose|
 |:-:|:-:|
 |<img src="https://3.bp.blogspot.com/-VVp3WvJvl84/X0Vu6EjYqDI/AAAAAAAAPjU/ZOMKiUlgfg8ok8DY8Hc-ocOvGdB0z86AgCLcBGAsYHQ/s1600/jetpack%2Bcompose%2Bicon_RGB.png" width="50" height="50"><br>[Jetpack Compose](https://developer.android.com/jetpack/compose)|Design UI|
+
+## Structure
+  Please check [my other project](https://github.com/giovanischiar/fridgnet?tab=readme-ov-file#structure) to learn more about the notation I used to create the diagrams in this project.
+
+## Diagrams
+
+### Package `io.schiar.pokechart`
+  This diagram shows all the packages the application has, along with their structures. Some packages are simplified, while others are more detailed.
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="./readme-res/diagrams/dark/io-schiar-pokechart-structure-diagram.dark.svg">
+    <img alt="Package io.schiar.pokechart Diagram" src="./readme-res/diagrams/io-schiar-pokechart-structure-diagram.light.svg">
+  </picture>
 
 ## Future Tasks
   - Create an Icon.
