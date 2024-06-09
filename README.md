@@ -13,6 +13,7 @@
 - [Structure](#structure)
 - [Diagrams](#diagrams)
   - [Package `io.schiar.pokechart`](#package-ioschiarpokechart)
+  - [Package `view` and `viewmodel`](#package-view-and-viewmodel)
 - [Future Tasks](#future-tasks)
 
 ## Use Case
@@ -38,6 +39,14 @@
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset="./readme-res/diagrams/dark/io-schiar-pokechart-structure-diagram.dark.svg">
     <img alt="Package io.schiar.pokechart Diagram" src="./readme-res/diagrams/io-schiar-pokechart-structure-diagram.light.svg">
+  </picture>
+
+### Package `view` and `viewmodel`
+  These diagrams illustrate the relationship between screens from `view` and `viewmodel` classes. The arrows from the View Models represent View Data objects (classes that hold all the necessary data for the view to display), primitives, or collections encapsulated by [State Flows](https://kotlinlang.org/api/kotlinx.coroutines/kotlinx-coroutines-core/kotlinx.coroutines.flow/-state-flow/), which are classes that encapsulate data streams. Every update in the View Data triggers the State Flow to emit these new values to the `view`, and the view updates automatically. Typically, the methods called from screens in `view` to classes in `viewmodel` trigger these changes, as represented in the diagram below by arrows from the `view` screens to `viewmodel` classes.
+
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="./readme-res/diagrams/dark/view-viewmodel-diagram.dark.svg">
+    <img alt="Package view with viewmodel Diagram" src="./readme-res/diagrams/view-viewmodel-diagram.light.svg">
   </picture>
 
 ## Future Tasks
