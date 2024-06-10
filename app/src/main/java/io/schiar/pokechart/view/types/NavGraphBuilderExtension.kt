@@ -7,7 +7,7 @@ import androidx.navigation.NavGraphBuilder
 import androidx.wear.compose.navigation.composable
 import io.schiar.pokechart.view.shared.util.Route
 import io.schiar.pokechart.view.types.uistate.TypeLayoutUiState
-import io.schiar.pokechart.view.types.uistate.TypesIndicesUiState
+import io.schiar.pokechart.view.types.uistate.SelectedTypesIndicesUiState
 import io.schiar.pokechart.viewmodel.TypesViewModel
 
 fun NavGraphBuilder.typesScreen(navigateToResultTypes : () -> Unit) {
@@ -18,7 +18,7 @@ fun NavGraphBuilder.typesScreen(navigateToResultTypes : () -> Unit) {
             .collectAsState(initial = TypeLayoutUiState.Loading)
         val selectedTypesIndicesUiState by typesViewModel
             .selectedTypesIndicesUiStateStateFlow
-            .collectAsState(initial = TypesIndicesUiState.Loading)
+            .collectAsState(initial = SelectedTypesIndicesUiState.Loading)
         TypesScreen(
             typeLayoutUiState = typeLayoutUiState,
             selectedTypesIndicesUiState = selectedTypesIndicesUiState,

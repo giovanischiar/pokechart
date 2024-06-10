@@ -6,12 +6,12 @@ import io.schiar.pokechart.R
 import io.schiar.pokechart.view.types.component.IconButton
 import io.schiar.pokechart.view.types.component.TypesView
 import io.schiar.pokechart.view.types.uistate.TypeLayoutUiState
-import io.schiar.pokechart.view.types.uistate.TypesIndicesUiState
+import io.schiar.pokechart.view.types.uistate.SelectedTypesIndicesUiState
 
 @Composable
 fun TypesScreen(
     typeLayoutUiState: TypeLayoutUiState,
-    selectedTypesIndicesUiState: TypesIndicesUiState,
+    selectedTypesIndicesUiState: SelectedTypesIndicesUiState,
     selectTypeAt: (index: Int) -> Unit,
     doneSelectingButtonWasPressed: () -> Unit,
     navigateToResultTypes: () -> Unit
@@ -21,8 +21,8 @@ fun TypesScreen(
         is TypeLayoutUiState.TypeLayoutLoaded -> typeLayoutUiState.typeLayout
     }
     val selectedTypesIndices = when (selectedTypesIndicesUiState) {
-        is TypesIndicesUiState.Loading -> return
-        is TypesIndicesUiState.TypesIndicesLoaded -> selectedTypesIndicesUiState.typesIndices
+        is SelectedTypesIndicesUiState.Loading -> return
+        is SelectedTypesIndicesUiState.SelectedTypesIndicesLoaded -> selectedTypesIndicesUiState.typesIndices
     }
 
     if (types.isEmpty()) return

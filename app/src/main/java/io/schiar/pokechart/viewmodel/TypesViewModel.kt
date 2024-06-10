@@ -3,8 +3,8 @@ package io.schiar.pokechart.viewmodel
 import androidx.lifecycle.ViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import io.schiar.pokechart.model.repository.TypesRepository
+import io.schiar.pokechart.view.types.uistate.SelectedTypesIndicesUiState
 import io.schiar.pokechart.view.types.uistate.TypeLayoutUiState
-import io.schiar.pokechart.view.types.uistate.TypesIndicesUiState
 import io.schiar.pokechart.viewmodel.util.toTypeLayoutViewData
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.map
@@ -17,9 +17,10 @@ class TypesViewModel @Inject constructor(
 ): ViewModel() {
     val typeLayoutUiStateFlow = typesRepository.typesFlow
         .map { types -> TypeLayoutUiState.TypeLayoutLoaded(types.toTypeLayoutViewData()) }
+
     private val selectedTypesIndicesMutableStateFlow = MutableStateFlow(value = listOf<Int>())
     val selectedTypesIndicesUiStateStateFlow = selectedTypesIndicesMutableStateFlow
-        .map { TypesIndicesUiState.TypesIndicesLoaded(it) }
+        .map { SelectedTypesIndicesUiState.SelectedTypesIndicesLoaded(it) }
 
     fun selectTypeAt(index: Int) {
         selectedTypesIndicesMutableStateFlow.update { selectedTypesIndices ->
