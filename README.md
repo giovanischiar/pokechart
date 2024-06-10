@@ -19,6 +19,7 @@
   - [Package `viewmodel` and `model.repository`](#package-viewmodel-and-modelrepository)
   - [Package `model`](#package-model)
   - [Package `model.repository` and `model`](#package-modelrepository-and-model)
+  - [Package `model.repository` and `model.datasource`](#package-modelrepository-and-modeldatasource)
 - [Future Tasks](#future-tasks)
 
 ## Use Case
@@ -92,6 +93,14 @@
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="./readme-res/diagrams/dark/repository-model-diagram.dark.svg">
   <img alt="Repository Model Diagram" src="./readme-res/diagrams/repository-model-diagram.light.svg">
+</picture>
+
+### Package `model.repository` and `model.datasource`
+  Data Sources provide their repositories with all the needed data for the application. This diagram represents all the associations among the classes in `model.repository`, `model.datasource`.
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="./readme-res/diagrams/dark/repository-datasource-diagram.dark.svg">
+  <img alt="Repository Data Source Diagram" src="./readme-res/diagrams/repository-datasource-diagram.light.svg">
 </picture>
 
 ## Future Tasks
