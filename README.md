@@ -18,6 +18,7 @@
   - [Package `viewmodel` and `view.viewdata`](#package-viewmodel-and-viewviewdata)
   - [Package `viewmodel` and `model.repository`](#package-viewmodel-and-modelrepository)
   - [Package `model`](#package-model)
+  - [Package `model.repository` and `model`](#package-modelrepository-and-model)
 - [Future Tasks](#future-tasks)
 
 ## Use Case
@@ -83,6 +84,14 @@
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="./readme-res/diagrams/dark/model-diagram.dark.svg">
   <img alt="Model Diagram" src="./readme-res/diagrams/model-diagram.light.svg">
+</picture>
+
+### Package `model.repository` and `model`
+  These diagrams represent all the associations among the classes in `model.repository` and `model`.
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="./readme-res/diagrams/dark/repository-model-diagram.dark.svg">
+  <img alt="Repository Model Diagram" src="./readme-res/diagrams/repository-model-diagram.light.svg">
 </picture>
 
 ## Future Tasks
