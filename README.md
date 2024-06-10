@@ -14,6 +14,7 @@
 - [Diagrams](#diagrams)
   - [Package `io.schiar.pokechart`](#package-ioschiarpokechart)
   - [Package `view` and `viewmodel`](#package-view-and-viewmodel)
+  - [Package `view.viewdata`](#package-viewviewdata)
 - [Future Tasks](#future-tasks)
 
 ## Use Case
@@ -48,6 +49,14 @@
     <source media="(prefers-color-scheme: dark)" srcset="./readme-res/diagrams/dark/view-viewmodel-diagram.dark.svg">
     <img alt="Package view with viewmodel Diagram" src="./readme-res/diagrams/view-viewmodel-diagram.light.svg">
   </picture>
+
+### Package `view.viewdata`
+  View Datas are classes that hold all the data the `view` needs to present. They are created from `model` classes and served by View Models to the `view`. This diagram represents all the associations among the classes in the `view.viewdata`.
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="./readme-res/diagrams/dark/viewdata-diagram.dark.svg">
+  <img alt="ViewData Diagram" src="./readme-res/diagrams/viewdata-diagram.light.svg">
+</picture>
 
 ## Future Tasks
   - Create an Icon.
