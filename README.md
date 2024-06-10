@@ -15,10 +15,7 @@
   - [Package `io.schiar.pokechart`](#package-ioschiarpokechart)
   - [Package `view` and `viewmodel`](#package-view-and-viewmodel)
   - [Package `view.viewdata`](#package-viewviewdata)
-<<<<<<< HEAD
   - [Package `viewmodel` and `view.viewdata`](#package-viewmodel-and-viewviewdata)
-=======
->>>>>>> c99c391 (Add View Model Repository Diagram)
   - [Package `viewmodel` and `model.repository`](#package-viewmodel-and-modelrepository)
 - [Future Tasks](#future-tasks)
 
@@ -63,7 +60,6 @@
   <img alt="ViewData Diagram" src="./readme-res/diagrams/viewdata-diagram.light.svg">
 </picture>
 
-<<<<<<< HEAD
 ### Package `viewmodel` and `view.viewdata`
   View Models serve the `view` with objects made from `view.viewdata` classes, collections, or primitive objects encapsulated by State Flows. This diagram represents all the associations among the classes in `viewmodel` and `view.viewdata`.
 
@@ -72,8 +68,6 @@
   <img alt="ViewModel Diagram 1" src="./readme-res/diagrams/viewmodel-viewdata-diagram.light.svg">
 </picture>
 
-=======
->>>>>>> c99c391 (Add View Model Repository Diagram)
 ### Package `viewmodel` and `model.repository`
   View Models also serve as a [façade](https://en.wikipedia.org/wiki/Facade_pattern), triggering methods in `model.repository` classes. This diagram shows that each View Model has its own repository class and illustrates all methods each View Model calls, represented by arrows from View Models to Repositories.
 
@@ -82,10 +76,6 @@
   <img alt="ViewModel/Repository Relationship Diagram" src="./readme-res/diagrams/viewmodel-repository-diagram.light.svg">
 </picture>
 
-<<<<<<< HEAD
->>>>>>> edb8719 (Update View Model View Data Diagram)
-=======
->>>>>>> c99c391 (Add View Model Repository Diagram)
 ## Future Tasks
   - Create an Icon.
   - Change the name.
