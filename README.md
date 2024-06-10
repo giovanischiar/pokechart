@@ -10,7 +10,6 @@
 
 - [Use Cases](#use-cases)
 - [Technologies](#technologies)
-- [Structure](#structure)
 - [Diagrams](#diagrams)
   - [Package `io.schiar.pokechart`](#package-ioschiarpokechart)
   - [Package `view` and `viewmodel`](#package-view-and-viewmodel)
@@ -35,10 +34,8 @@
 |:-:|:-:|
 |<img src="https://3.bp.blogspot.com/-VVp3WvJvl84/X0Vu6EjYqDI/AAAAAAAAPjU/ZOMKiUlgfg8ok8DY8Hc-ocOvGdB0z86AgCLcBGAsYHQ/s1600/jetpack%2Bcompose%2Bicon_RGB.png" width="50" height="50"><br>[Jetpack Compose](https://developer.android.com/jetpack/compose)|Design UI|
 
-## Structure
-  Please check [my other project](https://github.com/giovanischiar/fridgnet?tab=readme-ov-file#structure) to learn more about the notation I used to create the diagrams in this project.
-
 ## Diagrams
+  Please check <a href="https://github.com/giovanischiar/diagram-notation">this repository</a> to learn more about the notation I used to create the diagrams in this project.
 
 ### Package `io.schiar.pokechart`
   This diagram shows all the packages the application has, along with their structures. Some packages are simplified, while others are more detailed.
