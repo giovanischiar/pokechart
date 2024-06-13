@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <color name="backgroundColor">#895b1e</color>
+  <color name="fireOuterPartColor">#ff9900</color>
+  <color name="fireInnerPartColor">#f9d956</color>
+  <color name="waterColor">#2b59c3</color>
+  <color name="waterMarkColor">#8aa5e5</color>
+  <color name="explosionColor">#ed254e</color>
+</resources>
