@@ -75,6 +75,10 @@ dependencies {
     ksp("androidx.hilt:hilt-compiler:1.2.0")
     implementation("androidx.work:work-runtime-ktx:2.9.0")
     implementation("androidx.hilt:hilt-navigation-compose:1.2.0")
+
+    //noinspection KtxExtensionAvailable
+    implementation("androidx.sqlite:sqlite:2.4.0") // SQLite
+    testImplementation("junit:junit:4.13.2") // JUnit Test
 }
 
 task(name = "generateIcons", type = Exec::class) {
